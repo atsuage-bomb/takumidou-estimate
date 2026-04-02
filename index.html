@@ -16,7 +16,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
-
 header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.3);}
 .logo-mark{width:36px;height:36px;border:2px solid var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .logo-mark span{color:var(--gold);font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;}
@@ -24,7 +23,6 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .header-title p{font-size:10px;color:var(--gold);letter-spacing:.08em;margin-top:1px;}
 .header-reset{margin-left:auto;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);font-family:'Noto Sans JP',sans-serif;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .2s;}
 .header-reset:hover{background:rgba(201,168,76,.15);}
-
 .tabs-bar{background:var(--navy-mid);display:flex;align-items:stretch;border-bottom:1px solid rgba(201,168,76,.2);overflow-x:auto;position:sticky;top:57px;z-index:190;}
 .tab-btn{flex-shrink:0;min-width:110px;padding:12px 14px;background:transparent;border:none;color:rgba(250,246,238,.5);font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
 .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
@@ -37,11 +35,9 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .tab-add-btn{flex-shrink:0;padding:10px 16px;background:transparent;border:none;border-left:1px solid rgba(255,255,255,.08);color:rgba(201,168,76,.6);font-size:20px;cursor:pointer;transition:all .2s;display:none;align-items:center;}
 .tab-add-btn.visible{display:flex;}
 .tab-add-btn:hover{color:var(--gold);background:rgba(201,168,76,.08);}
-
 .main-wrap{max-width:860px;margin:0 auto;padding:18px 14px 48px;}
 .tab-panel{display:none;}
 .tab-panel.active{display:block;animation:fadeIn .2s ease;}
-
 .card{background:#fff;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;}
 .card-head{background:var(--navy);padding:11px 16px;display:flex;align-items:center;gap:9px;}
 .card-head-icon{width:26px;height:26px;background:rgba(201,168,76,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
@@ -50,7 +46,6 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .card-head.loan-head{background:var(--teal);}
 .card-head.loan-head .card-head-icon{background:rgba(77,232,184,.15);}
 .card-body{padding:14px 16px;}
-
 .course-row{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:8px;margin-bottom:5px;border:1.5px solid transparent;transition:all .18s;cursor:pointer;user-select:none;}
 .course-row:last-child{margin-bottom:0;}
 .course-row:hover{background:var(--cream);}
@@ -73,7 +68,6 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .badge-special{background:#f0fff4;color:var(--green);}
 .badge-restricted{background:#f0f0f0;color:#999;font-size:9px;}
 .course-price{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;text-align:right;}
-
 .notice{background:var(--cream-dark);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:9px 12px;font-size:12px;color:var(--text-mid);margin-bottom:12px;line-height:1.6;}
 .discount-bar{background:linear-gradient(135deg,#e8f5ed,#d4eed9);border:1.5px solid #a8d8b2;border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:9px;margin-top:10px;}
 .disc-icon{font-size:16px;}.disc-text{flex:1;font-size:12px;color:var(--green);font-weight:500;}
@@ -87,7 +81,6 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .starter-item{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dashed #e8d9a0;}
 .starter-item:last-child{border-bottom:none;}
 .starter-item .s-price{font-family:'Noto Serif JP',serif;font-weight:600;}
-
 .summary-card{background:var(--navy);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:20px;margin-bottom:8px;}
 .summary-head{background:var(--gold);padding:10px 16px;}
 .summary-head span{font-size:13px;font-weight:700;color:var(--navy);}
@@ -104,39 +97,30 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .grand-total-label{font-size:10px;color:var(--gold);letter-spacing:.1em;margin-bottom:3px;}
 .grand-total-num{font-family:'Noto Serif JP',serif;font-size:30px;font-weight:700;color:#fff;letter-spacing:.02em;}
 .grand-total-note{font-size:10px;color:rgba(255,255,255,.45);margin-top:3px;}
-
-/* TRAINER NUDGE – in 1人目 tab */
 .trainer-nudge{background:linear-gradient(135deg,#e2f8f0,#ccf0e2);border:1.5px solid #6dcca0;border-radius:10px;padding:13px 16px;margin-bottom:14px;font-size:12px;color:#1a5c3a;line-height:1.7;display:none;}
 .trainer-nudge .nudge-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px;}
 .nudge-savings{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--green);}
-
-/* TRAINER BENEFIT CARD – in staff tabs */
 .trainer-benefit-card{background:linear-gradient(160deg,#0a3d4a,#0e5f6e);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:14px;display:none;}
 .tb-head{background:linear-gradient(90deg,#4de8b8,#2db89a);padding:11px 16px;display:flex;align-items:center;gap:8px;}
-.tb-head-icon{font-size:16px;}
 .tb-head-title{font-size:13px;font-weight:700;color:#0a3040;}
 .tb-head-sub{font-size:10px;color:#0a5040;margin-left:auto;}
 .tb-body{padding:12px 16px 4px;}
 .tb-table{width:100%;border-collapse:collapse;}
 .tb-table th{font-size:10px;color:rgba(255,255,255,.45);font-weight:500;padding:3px 6px;text-align:right;}
 .tb-table th:first-child{text-align:left;}
-.tb-table td{font-size:12px;padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.07);}
+.tb-table td{font-size:12px;padding:6px 6px;border-bottom:1px solid rgba(255,255,255,.07);}
 .tb-table tr:last-child td{border-bottom:none;}
-.tb-table .td-label{color:rgba(255,255,255,.8);}
-.tb-table .td-regular{text-align:right;color:rgba(255,255,255,.35);text-decoration:line-through;}
-.tb-table .td-trainer{text-align:right;color:#4de8b8;font-family:'Noto Serif JP',serif;font-weight:700;}
-.tb-table .td-save{text-align:right;color:#7de8a0;font-size:11px;}
-.tb-table .td-no-save{text-align:right;color:rgba(255,255,255,.3);font-size:11px;}
-.tb-table .tr-cranio td{opacity:.5;}
+.td-label{color:rgba(255,255,255,.85);}
+.td-regular{text-align:right;color:rgba(255,255,255,.3);text-decoration:line-through;}
+.td-trainer{text-align:right;color:#4de8b8;font-family:'Noto Serif JP',serif;font-weight:700;}
+.td-save{text-align:right;color:#7de8a0;font-size:11px;}
+.td-nosave{text-align:right;color:rgba(255,255,255,.25);font-size:11px;}
 .tb-saving-area{background:rgba(0,0,0,.3);margin:10px 0 14px;border-radius:8px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
-.tb-saving-left .tb-saving-label{font-size:10px;color:rgba(77,232,184,.7);letter-spacing:.06em;margin-bottom:2px;}
-.tb-saving-left .tb-saving-num{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:#4de8b8;}
-.tb-saving-right{text-align:right;}
-.tb-saving-right .tb-after-label{font-size:10px;color:rgba(255,255,255,.4);}
-.tb-saving-right .tb-after-num{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:#fff;}
-.tb-cranio-note{font-size:10px;color:rgba(255,255,255,.35);padding:0 16px 12px;text-align:right;}
-
-/* LOAN */
+.tb-saving-label{font-size:10px;color:rgba(77,232,184,.7);letter-spacing:.06em;margin-bottom:2px;}
+.tb-saving-num{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:#4de8b8;}
+.tb-after-label{font-size:10px;color:rgba(255,255,255,.4);text-align:right;}
+.tb-after-num{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:#fff;text-align:right;}
+.tb-cranio-note{font-size:10px;color:rgba(255,255,255,.3);padding:0 16px 12px;text-align:right;}
 .loan-card{border-color:#1a7a8a;}
 .loan-principal-bar{background:rgba(14,95,110,.08);border:1px solid rgba(14,95,110,.25);border-radius:8px;padding:9px 14px;margin-bottom:14px;font-size:12px;color:var(--teal-mid);display:flex;align-items:center;justify-content:space-between;}
 .loan-principal-bar strong{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:var(--teal);}
@@ -157,8 +141,6 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .loan-total-bar{background:rgba(14,95,110,.1);border:1px solid rgba(14,95,110,.2);border-radius:8px;padding:9px 14px;margin-top:10px;font-size:12px;color:var(--teal-mid);display:flex;justify-content:space-between;align-items:center;}
 .loan-total-bar strong{font-family:'Noto Serif JP',serif;font-size:15px;color:var(--teal);}
 .loan-empty{text-align:center;padding:20px;font-size:12px;color:var(--text-light);}
-
-/* COMBINED */
 .combined-card{background:var(--navy);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:14px;}
 .combined-head{background:linear-gradient(135deg,#0e5f6e,#0a4352);padding:12px 16px;display:flex;align-items:center;gap:10px;}
 .combined-head h2{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:#4de8b8;letter-spacing:.04em;}
@@ -166,15 +148,14 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .combined-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:13px;color:rgba(250,246,238,.8);border-bottom:1px solid rgba(255,255,255,.07);}
 .combined-row:last-child{border-bottom:none;}
 .combined-row .c-val{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:600;color:var(--cream);}
-.combined-row.total-row{font-size:15px;font-weight:700;color:var(--cream);padding-top:12px;border-top:1px solid rgba(77,232,184,.3);margin-top:4px;}
+.combined-row.total-row{font-size:15px;font-weight:700;padding-top:12px;border-top:1px solid rgba(77,232,184,.3);margin-top:4px;}
 .combined-row.total-row .c-val{font-size:24px;color:#4de8b8;}
 .combined-grand-area{background:rgba(0,0,0,.3);margin:4px 16px 16px;border-radius:8px;padding:12px;text-align:center;}
 .combined-grand-label{font-size:10px;color:#4de8b8;letter-spacing:.1em;margin-bottom:4px;}
 .combined-grand-num{font-family:'Noto Serif JP',serif;font-size:36px;font-weight:700;color:#fff;}
 .combined-note{background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:8px;padding:10px 14px;margin:0 16px 16px;font-size:12px;color:#e88;line-height:1.6;}
-
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
-.card,.trainer-benefit-card{animation:fadeIn .22s ease both;}
+.card{animation:fadeIn .22s ease both;}
 @media(min-width:600px){.main-wrap{padding:22px 22px 56px;}.grand-total-num{font-size:38px;}}
 </style>
 </head>
@@ -193,15 +174,9 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 </div>
 
 <div class="main-wrap">
-<!-- ═════ 1人目 ═════ -->
 <div class="tab-panel active" id="tab-panel-0">
   <div class="notice"><strong>📌 ご案内</strong>　初めて受講されるお客様は、必ず<strong>基本コース</strong>をご選択ください。オプションコースは単独では受講できません。</div>
-
-  <!-- トレーナー節約ナッジ -->
-  <div class="trainer-nudge" id="p0-trainer-nudge">
-    <div class="nudge-title">💡 トレーナー講習も受講するとさらにお得！</div>
-    <span id="p0-nudge-body"></span>
-  </div>
+  <div class="trainer-nudge" id="p0-trainer-nudge"><div class="nudge-title">💡 トレーナー講習も受講するとさらにお得！</div><span id="p0-nudge-body"></span></div>
 
   <div class="card">
     <div class="card-head"><div class="card-head-icon">📚</div><h2>基本コース</h2><span class="card-sub">必須選択</span></div>
@@ -251,10 +226,11 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
     <div class="grand-total-area"><div class="grand-total-label">お支払い合計（税込）</div><div class="grand-total-num" id="p0-grand-total">―</div><div class="grand-total-note" id="p0-grand-note"></div></div>
   </div>
 
+  
   <div class="card loan-card">
-    <div class="card-head loan-head"><div class="card-head-icon">💳</div><h2>スクールローン シミュレーター</h2><span class="card-sub">1人目</span></div>
+    <div class="card-head loan-head"><div class="card-head-icon">&#x1F4B3;</div><h2>スクールローン シミュレーター</h2><span class="card-sub">1人目</span></div>
     <div class="card-body">
-      <div class="loan-principal-bar">ローン対象額<strong id="l0-principal">¥―</strong></div>
+      <div class="loan-principal-bar">ローン対象額<strong id="l0-principal">&#xFFE5;&#x2015;</strong></div>
       <div class="loan-form">
         <div class="loan-field"><label>頭金</label><div class="input-wrap"><input type="number" id="l0-down" value="0" min="0" oninput="calcLoan('l0')"><span class="unit">円</span></div></div>
         <div class="loan-field"><label>アドオン料率</label><select id="l0-rate" onchange="calcLoan('l0')"><option value="0.60">0.60%</option><option value="0.65">0.65%</option><option value="0.70" selected>0.70%</option><option value="0.75">0.75%</option><option value="0.80">0.80%</option><option value="0.85">0.85%</option><option value="0.90">0.90%</option><option value="0.95">0.95%</option><option value="1.00">1.00%</option></select></div>
@@ -267,18 +243,21 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 
 <div id="staff-panels-container"></div>
 
-<!-- ═════ 合算 ═════ -->
 <div class="tab-panel" id="tab-panel-combined">
   <div class="combined-card">
     <div class="combined-head"><div class="card-head-icon" style="background:rgba(77,232,184,.15)">📊</div><h2>お支払い合計 合算</h2></div>
     <div class="combined-rows" id="combined-rows"><div style="padding:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.4)">各タブでコースを選択すると合算が表示されます</div></div>
     <div class="combined-grand-area"><div class="combined-grand-label">全員 お支払い合計（税込）</div><div class="combined-grand-num" id="combined-grand-total">―</div></div>
-    <div class="combined-note">⚠️ <strong>スクールローンについて</strong>　ローンは受講者個人のお支払い額が対象となります。合算額はローン申込には使用できません。各人のローンシミュレーションは各タブをご確認ください。</div>
+    <div class="combined-note">⚠️ <strong>スクールローンについて</strong>　ローンは受講者個人のお支払い額が対象となります。合算額はローン申込には使用できません。</div>
   </div>
 </div>
 </div>
 
 <script>
+
+const STAFF_RATE_OPTS = '<option value="0.60">0.60%</option><option value="0.65">0.65%</option><option value="0.70" selected>0.70%</option><option value="0.75">0.75%</option><option value="0.80">0.80%</option><option value="0.85">0.85%</option><option value="0.90">0.90%</option><option value="0.95">0.95%</option><option value="1.00">1.00%</option>';
+const STAFF_COUNT_OPTS = '<option value="6">6回</option><option value="10">10回</option><option value="12">12回</option><option value="15">15回</option><option value="18">18回</option><option value="20">20回</option><option value="24">24回</option><option value="30">30回</option><option value="36" selected>36回</option><option value="48">48回</option><option value="60">60回</option>';
+
 const P1={basic:220000,textBasic:11000,hige:110000,ladiesVio:110000,mensVio:110000,cranio:110000,textCranio:11000,accessory:3300,trainer:495000,owner:110000};
 const P2={basic:88000,textBasic:11000,hige:44000,ladiesVio:44000,mensVio:44000,cranio:44000,textCranio:11000,accessory:3300,adminFee:11000};
 const STARTERS=[
@@ -294,25 +273,19 @@ const STARTERS=[
 const getStarter=(h,v,c)=>STARTERS.find(s=>s.hige===h&&s.vio===v&&s.cranio===c);
 
 const s0={basic:true,hige:false,ladiesVio:false,mensVio:false,cranio:false,trainer:false,owner:false};
-let staffStates=[];
-let staffTabIds=[];
-let nextTabId=1;
-const grandTotals={};
-const loanPrincipals={l0:0};
+let staffStates=[],staffTabIds=[],nextTabId=1;
+const grandTotals={},loanPrincipals={l0:0};
 
-// ─── TABS ───
 let currentTab=0;
 function switchTab(id){
   currentTab=id;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  const bid='tab-btn-'+(id==='combined'?'combined':id);
-  const pid='tab-panel-'+(id==='combined'?'combined':id);
-  const b=document.getElementById(bid),p=document.getElementById(pid);
+  const b=document.getElementById('tab-btn-'+(id==='combined'?'combined':id));
+  const p=document.getElementById('tab-panel-'+(id==='combined'?'combined':id));
   if(b)b.classList.add('active');if(p)p.classList.add('active');
 }
 
-// ─── LOAN ───
 function calcLoan(prefix){
   const principal=loanPrincipals[prefix]||0;
   const de=document.getElementById(prefix+'-down'),re=document.getElementById(prefix+'-rate'),ce=document.getElementById(prefix+'-count');
@@ -347,13 +320,10 @@ function updateLoanPrincipal(prefix,amount){
   calcLoan(prefix);
 }
 
-// ─── COMBINED ───
 function updateCombined(){
   const entries=[];
   if(grandTotals['p0']!=null)entries.push({label:'👤 1人目',total:grandTotals['p0']});
-  staffTabIds.forEach((tid,i)=>{
-    if(grandTotals['s'+tid]!=null)entries.push({label:`👥 ${i+2}人目（スタッフ）`,total:grandTotals['s'+tid]});
-  });
+  staffTabIds.forEach((tid,i)=>{if(grandTotals['s'+tid]!=null)entries.push({label:`👥 ${i+2}人目`,total:grandTotals['s'+tid]});});
   if(!entries.length){
     document.getElementById('combined-rows').innerHTML='<div style="padding:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.4)">各タブでコースを選択すると合算が表示されます</div>';
     document.getElementById('combined-grand-total').textContent='―';return;
@@ -365,124 +335,76 @@ function updateCombined(){
   document.getElementById('combined-grand-total').textContent='¥'+total.toLocaleString();
 }
 
-// ─── TRAINER NUDGE (1人目 tab) ───
+function ownerHas(prop){
+  if(prop==='basic')return true;
+  return !!s0[prop];
+}
+
+function syncStaffToOwner(){
+  staffTabIds.forEach((tid,i)=>{
+    const st=staffStates[i];let changed=false;
+    ['hige','ladiesVio','mensVio','cranio'].forEach(p=>{if(!s0[p]&&st[p]){st[p]=false;changed=true;}});
+    if(changed)updateStaff(tid);
+  });
+}
+
 function updateTrainerNudge(){
   const el=document.getElementById('p0-trainer-nudge');
   const body=document.getElementById('p0-nudge-body');
   if(!el||!body)return;
-  // Show nudge only when owner is selected BUT trainer is NOT selected
   if(!s0.owner||s0.trainer){el.style.display='none';return;}
   let savings=0;
-  const lines=[];
-  if(s0.basic){savings+=P2.basic;lines.push('基本コース ▲¥'+P2.basic.toLocaleString());}
-  if(s0.hige){savings+=P2.hige;lines.push('ヒゲ ▲¥'+P2.hige.toLocaleString());}
-  if(s0.ladiesVio){savings+=P2.ladiesVio;lines.push('レディースVIO ▲¥'+P2.ladiesVio.toLocaleString());}
-  if(s0.mensVio){savings+=P2.mensVio;lines.push('メンズVIO ▲¥'+P2.mensVio.toLocaleString());}
+  if(s0.basic)savings+=P2.basic;
+  if(s0.hige)savings+=P2.hige;
+  if(s0.ladiesVio)savings+=P2.ladiesVio;
+  if(s0.mensVio)savings+=P2.mensVio;
   if(savings>0){
     el.style.display='block';
     body.innerHTML=`選択中のコースをスタッフに直接指導することで（クラニオを除く）、2人目の受講料を最大<br><span class="nudge-savings"> ¥${savings.toLocaleString()} </span>節約できます！<br><small style="opacity:.7">（テキスト代・付属品費・事務手数料は引き続き必要です）</small>`;
-  } else {
-    el.style.display='none';
-  }
+  }else{el.style.display='none';}
 }
 
-// ─── TRAINER BENEFIT CARD (staff tab) ───
 function renderTrainerBenefit(tid,st){
   const el=document.getElementById('s'+tid+'-trainer-benefit');
   if(!el)return;
   if(!s0.owner||!s0.trainer){el.style.display='none';return;}
   el.style.display='block';
-
-  // Teachable courses: owner took & not cranio
   const courses=[
-    {key:'basic',label:'基本コース',regular:P2.basic,selected:st.basic,ownerHas:s0.basic,teachable:true},
-    {key:'hige',label:'ヒゲ',regular:P2.hige,selected:st.hige,ownerHas:s0.hige,teachable:true},
-    {key:'ladiesVio',label:'レディースVIO',regular:P2.ladiesVio,selected:st.ladiesVio,ownerHas:s0.ladiesVio,teachable:true},
-    {key:'mensVio',label:'メンズVIO',regular:P2.mensVio,selected:st.mensVio,ownerHas:s0.mensVio,teachable:true},
-    {key:'cranio',label:'クラニオ',regular:P2.cranio,selected:st.cranio,ownerHas:s0.cranio,teachable:false},
-  ].filter(c=>c.ownerHas&&c.selected);
-
-  const totalSavings=courses.filter(c=>c.teachable).reduce((s,c)=>s+c.regular,0);
-
-  // Calculate adjusted total
+    {key:'basic',label:'基本コース',reg:P2.basic,sel:st.basic,owns:s0.basic,teach:true},
+    {key:'hige',label:'ヒゲ',reg:P2.hige,sel:st.hige,owns:s0.hige,teach:true},
+    {key:'ladiesVio',label:'レディースVIO',reg:P2.ladiesVio,sel:st.ladiesVio,owns:s0.ladiesVio,teach:true},
+    {key:'mensVio',label:'メンズVIO',reg:P2.mensVio,sel:st.mensVio,owns:s0.mensVio,teach:true},
+    {key:'cranio',label:'クラニオ',reg:P2.cranio,sel:st.cranio,owns:s0.cranio,teach:false},
+  ].filter(c=>c.owns&&c.sel);
+  if(!courses.length){
+    el.innerHTML='<div class="tb-head"><span class="tb-head-title">💡 オーナーが直接指導をした場合</span></div><div style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,.4)">スタッフのコースを選択すると節約額が表示されます</div>';
+    return;
+  }
+  const totalSavings=courses.filter(c=>c.teach).reduce((s,c)=>s+c.reg,0);
   const cc=1+[st.hige,st.ladiesVio,st.mensVio,st.cranio].filter(Boolean).length;
   const af=cc*P2.adminFee;
   let days=2;if(st.hige)days++;if(st.ladiesVio)days++;if(st.mensVio)days++;if(st.cranio)days++;
   const acc=days*P2.accessory;
-  let adjustedTotal=P2.textBasic+af+acc; // textBasic always
-  if(st.cranio)adjustedTotal+=P2.cranio+P2.textCranio; // cranio still full price
-  // non-cranio courses: ¥0 course fee (trainer teaches), still pay admin (already in af)
-  const hasVio=st.ladiesVio||st.mensVio;
-  const starter=getStarter(st.hige,hasVio,st.cranio);
-  if(starter)adjustedTotal+=starter.price;
-
-  let rows='';
-  rows+=`<tr class="tb-header-row"><th>コース</th><th style="text-align:right">通常</th><th style="text-align:right">指導</th><th style="text-align:right">節約額</th></tr>`;
+  let adjTotal=P2.textBasic+af+acc;
+  if(st.cranio)adjTotal+=P2.cranio+P2.textCranio;
+  const starter=getStarter(st.hige,st.ladiesVio||st.mensVio,st.cranio);
+  if(starter)adjTotal+=starter.price;
+  let rows=`<tr><th>コース</th><th style="text-align:right">通常</th><th style="text-align:right">指導</th><th style="text-align:right">節約</th></tr>`;
   courses.forEach(c=>{
-    const trainerPrice=c.teachable?0:c.regular;
-    const save=c.teachable?c.regular:0;
-    rows+=`<tr class="${c.key==='cranio'?'tr-cranio':''}">
-      <td class="td-label">${c.label}${!c.teachable?' <small style="color:rgba(255,255,255,.3)">(指導不可)</small>':''}</td>
-      <td class="td-regular">¥${c.regular.toLocaleString()}</td>
-      <td class="td-trainer">${trainerPrice===0?'¥0 <small>免除</small>':'¥'+trainerPrice.toLocaleString()}</td>
-      <td class="${save>0?'td-save':'td-no-save'}">${save>0?'▲¥'+save.toLocaleString():'—'}</td>
-    </tr>`;
+    const tp=c.teach?0:c.reg,sv=c.teach?c.reg:0;
+    rows+=`<tr><td class="td-label">${c.label}${!c.teach?' <small style="color:rgba(255,255,255,.3)">(指導不可)</small>':''}</td><td class="td-regular">¥${c.reg.toLocaleString()}</td><td class="td-trainer">${tp===0?'¥0':'¥'+tp.toLocaleString()}</td><td class="${sv>0?'td-save':'td-nosave'}">${sv>0?'▲¥'+sv.toLocaleString():'—'}</td></tr>`;
   });
-
   el.innerHTML=`
-  <div class="tb-head"><span class="tb-head-icon">💡</span><span class="tb-head-title">トレーナー直接指導を活用した場合</span><span class="tb-head-sub">クラニオを除くコースに適用</span></div>
+  <div class="tb-head"><span class="tb-head-title">💡 オーナーが直接指導をした場合</span><span class="tb-head-sub">クラニオを除くコースに適用</span></div>
   <div class="tb-body">
     <table class="tb-table">${rows}</table>
     <div class="tb-saving-area">
-      <div class="tb-saving-left">
-        <div class="tb-saving-label">受講料の節約額</div>
-        <div class="tb-saving-num">▲¥${totalSavings.toLocaleString()}</div>
-      </div>
-      <div class="tb-saving-right">
-        <div class="tb-after-label">指導適用後の合計</div>
-        <div class="tb-after-num">¥${adjustedTotal.toLocaleString()}</div>
-      </div>
+      <div><div class="tb-saving-label">受講料の節約額</div><div class="tb-saving-num">▲¥${totalSavings.toLocaleString()}</div></div>
+      <div><div class="tb-after-label">指導適用後の合計</div><div class="tb-after-num">¥${adjTotal.toLocaleString()}</div></div>
     </div>
   </div>
   ${s0.cranio&&st.cranio?'<div class="tb-cranio-note">※ クラニオはトレーナーが指導できないため通常料金です</div>':''}`;
 }
-
-// ─── STAFF RESTRICTION HELPERS ───
-// Check if owner has this course (determines if staff can take it)
-function ownerHas(courseKey){
-  if(courseKey==='basic')return true;
-  if(courseKey==='hige')return s0.hige;
-  if(courseKey==='ladiesVio')return s0.ladiesVio;
-  if(courseKey==='mensVio')return s0.mensVio;
-  if(courseKey==='cranio')return s0.cranio;
-  return false;
-}
-
-// When owner removes a course, auto-deselect from all staff
-function syncStaffToOwner(){
-  staffTabIds.forEach((tid,i)=>{
-    const st=staffStates[i];
-    let changed=false;
-    if(!s0.hige&&st.hige){st.hige=false;changed=true;}
-    if(!s0.ladiesVio&&st.ladiesVio){st.ladiesVio=false;changed=true;}
-    if(!s0.mensVio&&st.mensVio){st.mensVio=false;changed=true;}
-    if(!s0.cranio&&st.cranio){st.cranio=false;changed=true;}
-    if(changed)updateStaff(tid);
-  });
-}
-
-// Apply restriction visual state to a staff option row
-function applyRestriction(rowId,courseKey,selectedState){
-  const el=document.getElementById(rowId);
-  if(!el)return;
-  const allowed=ownerHas(courseKey);
-  el.classList.toggle('owner-restricted',!allowed);
-  el.classList.toggle('selected',allowed&&selectedState);
-}
-
-// ─── STAFF MANAGEMENT ───
-const <option value="0.60">0.60%</option><option value="0.65">0.65%</option><option value="0.70" selected>0.70%</option><option value="0.75">0.75%</option><option value="0.80">0.80%</option><option value="0.85">0.85%</option><option value="0.90">0.90%</option><option value="0.95">0.95%</option><option value="1.00">1.00%</option>='<option value="0.60">0.60%</option><option value="0.65">0.65%</option><option value="0.70" selected>0.70%</option><option value="0.75">0.75%</option><option value="0.80">0.80%</option><option value="0.85">0.85%</option><option value="0.90">0.90%</option><option value="0.95">0.95%</option><option value="1.00">1.00%</option>';
-const <option value="6">6回</option><option value="10">10回</option><option value="12">12回</option><option value="15">15回</option><option value="18">18回</option><option value="20">20回</option><option value="24">24回</option><option value="30">30回</option><option value="36" selected>36回</option><option value="48">48回</option><option value="60">60回</option>='<option value="6">6回</option><option value="10">10回</option><option value="12">12回</option><option value="15">15回</option><option value="18">18回</option><option value="20">20回</option><option value="24">24回</option><option value="30">30回</option><option value="36" selected>36回</option><option value="48">48回</option><option value="60">60回</option>';
 
 function makeStaffHTML(tid,nth){
   const lp='l'+tid;
@@ -523,7 +445,6 @@ function makeStaffHTML(tid,nth){
   <div class="summary-rows" id="s${tid}-summary-rows"></div>
   <div class="grand-total-area"><div class="grand-total-label">${nth}人目 お支払い合計（税込）</div><div class="grand-total-num" id="s${tid}-grand-total">―</div><div class="grand-total-note" id="s${tid}-grand-note"></div></div>
 </div>
-<!-- Trainer benefit card -->
 <div class="trainer-benefit-card" id="s${tid}-trainer-benefit"></div>
 <div class="card loan-card">
   <div class="card-head loan-head"><div class="card-head-icon">💳</div><h2>スクールローン シミュレーター</h2><span class="card-sub">${nth}人目</span></div>
@@ -531,8 +452,8 @@ function makeStaffHTML(tid,nth){
     <div class="loan-principal-bar">ローン対象額<strong id="${lp}-principal">¥―</strong></div>
     <div class="loan-form">
       <div class="loan-field"><label>頭金</label><div class="input-wrap"><input type="number" id="${lp}-down" value="0" min="0" oninput="calcLoan('${lp}')"><span class="unit">円</span></div></div>
-      <div class="loan-field"><label>アドオン料率</label><select id="${lp}-rate" onchange="calcLoan('${lp}')">${<option value="0.60">0.60%</option><option value="0.65">0.65%</option><option value="0.70" selected>0.70%</option><option value="0.75">0.75%</option><option value="0.80">0.80%</option><option value="0.85">0.85%</option><option value="0.90">0.90%</option><option value="0.95">0.95%</option><option value="1.00">1.00%</option>}</select></div>
-      <div class="loan-field"><label>支払回数</label><select id="${lp}-count" onchange="calcLoan('${lp}')">${<option value="6">6回</option><option value="10">10回</option><option value="12">12回</option><option value="15">15回</option><option value="18">18回</option><option value="20">20回</option><option value="24">24回</option><option value="30">30回</option><option value="36" selected>36回</option><option value="48">48回</option><option value="60">60回</option>}</select></div>
+      <div class="loan-field"><label>アドオン料率</label><select id="${lp}-rate" onchange="calcLoan('${lp}')">${STAFF_RATE_OPTS}</select></div>
+      <div class="loan-field"><label>支払回数</label><select id="${lp}-count" onchange="calcLoan('${lp}')">${STAFF_COUNT_OPTS}</select></div>
     </div>
     <div id="${lp}-result"></div>
   </div>
@@ -544,28 +465,21 @@ function addStaff(){
   staffStates.push({basic:true,hige:false,ladiesVio:false,mensVio:false,cranio:false});
   staffTabIds.push(tid);
   const arrIdx=staffStates.length-1;
-  const tabsBar=document.getElementById('tabs-bar');
-  const addBtn=document.getElementById('add-staff-btn');
+  const tabsBar=document.getElementById('tabs-bar'),addBtn=document.getElementById('add-staff-btn');
   const ph=document.getElementById('tab-btn-placeholder');
   if(ph){
     ph.id='tab-btn-'+tid;ph.disabled=false;
     ph.innerHTML=`👥 ${arrIdx+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${tid})">✕</span>`;
     ph.onclick=()=>switchTab(tid);
-  } else {
-    const btn=document.createElement('button');
-    btn.className='tab-btn';btn.id='tab-btn-'+tid;
+  }else{
+    const btn=document.createElement('button');btn.className='tab-btn';btn.id='tab-btn-'+tid;
     btn.innerHTML=`👥 ${arrIdx+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${tid})">✕</span>`;
-    btn.onclick=()=>switchTab(tid);
-    tabsBar.insertBefore(btn,addBtn);
+    btn.onclick=()=>switchTab(tid);tabsBar.insertBefore(btn,addBtn);
   }
   const container=document.getElementById('staff-panels-container');
-  const div=document.createElement('div');
-  div.className='tab-panel';div.id='tab-panel-'+tid;
-  div.innerHTML=makeStaffHTML(tid,arrIdx+2);
-  container.appendChild(div);
-  loanPrincipals['l'+tid]=0;
-  updateStaff(tid);
-  switchTab(tid);
+  const div=document.createElement('div');div.className='tab-panel';div.id='tab-panel-'+tid;
+  div.innerHTML=makeStaffHTML(tid,arrIdx+2);container.appendChild(div);
+  loanPrincipals['l'+tid]=0;updateStaff(tid);switchTab(tid);
 }
 
 function removeStaff(e,tid){
@@ -573,11 +487,11 @@ function removeStaff(e,tid){
   const arrIdx=staffTabIds.indexOf(tid);if(arrIdx===-1)return;
   staffStates.splice(arrIdx,1);staffTabIds.splice(arrIdx,1);
   delete grandTotals['s'+tid];delete loanPrincipals['l'+tid];
-  const btn=document.getElementById('tab-btn-'+tid),pnl=document.getElementById('tab-panel-'+tid);
-  if(btn)btn.remove();if(pnl)pnl.remove();
+  const b=document.getElementById('tab-btn-'+tid),p=document.getElementById('tab-panel-'+tid);
+  if(b)b.remove();if(p)p.remove();
   staffTabIds.forEach((t,i)=>{
-    const b=document.getElementById('tab-btn-'+t);
-    if(b)b.innerHTML=`👥 ${i+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${t})">✕</span>`;
+    const btn=document.getElementById('tab-btn-'+t);
+    if(btn)btn.innerHTML=`👥 ${i+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${t})">✕</span>`;
   });
   if(!staffStates.length){
     const ph=document.createElement('button');ph.className='tab-btn';ph.id='tab-btn-placeholder';ph.disabled=true;ph.textContent='👥 2人目（スタッフ）';
@@ -586,7 +500,6 @@ function removeStaff(e,tid){
   switchTab(0);updateCombined();
 }
 
-// ─── TOGGLES ───
 function toggleOpt0(key){
   const map={hige:'hige','ladies-vio':'ladiesVio','mens-vio':'mensVio',cranio:'cranio'};
   s0[map[key]]=!s0[map[key]];update0();
@@ -616,17 +529,17 @@ function toggleOwner(){
 function toggleStaffOpt(tid,key){
   const map={hige:'hige','ladies-vio':'ladiesVio','mens-vio':'mensVio',cranio:'cranio'};
   const prop=map[key];
-  if(!ownerHas(prop))return; // Owner doesn't have this course → blocked
+  if(!ownerHas(prop))return;
   const arrIdx=staffTabIds.indexOf(tid);if(arrIdx===-1)return;
   staffStates[arrIdx][prop]=!staffStates[arrIdx][prop];
   updateStaff(tid);
 }
 
-// ─── UPDATE 1人目 ───
 function update0(){
   const s=s0;
   const sel=(id,v)=>{const el=document.getElementById(id);if(el)el.classList.toggle('selected',v);};
-  sel('p0-row-hige',s.hige);sel('p0-row-ladies-vio',s.ladiesVio);sel('p0-row-mens-vio',s.mensVio);sel('p0-row-cranio',s.cranio);sel('p0-row-trainer',s.trainer);sel('p0-row-owner',s.owner);
+  sel('p0-row-hige',s.hige);sel('p0-row-ladies-vio',s.ladiesVio);sel('p0-row-mens-vio',s.mensVio);
+  sel('p0-row-cranio',s.cranio);sel('p0-row-trainer',s.trainer);sel('p0-row-owner',s.owner);
   const ct=document.getElementById('p0-row-text-cranio');if(ct)ct.style.display=s.cranio?'flex':'none';
   let days=2;if(s.hige)days++;if(s.ladiesVio)days++;if(s.mensVio)days++;if(s.cranio)days++;
   const acc=days*P1.accessory;
@@ -634,7 +547,7 @@ function update0(){
   const disc=optCount>=3?44000:optCount===2?22000:0;
   const discBar=document.getElementById('p0-discount-bar');
   if(disc>0){discBar.style.display='flex';document.getElementById('p0-discount-text').textContent=`オプション${optCount}個選択割引`;document.getElementById('p0-discount-amount').textContent=`－¥${disc.toLocaleString()}`;}
-  else{discBar.style.display='none';}
+  else discBar.style.display='none';
   document.getElementById('p0-days').textContent=days;document.getElementById('p0-accessory').textContent=`¥${acc.toLocaleString()}`;
   let ct2=0;const rows=[];
   if(s.basic){rows.push(['基本コース',P1.basic],['テキスト（基本）',P1.textBasic]);ct2+=P1.basic+P1.textBasic;}
@@ -645,7 +558,7 @@ function update0(){
   rows.push([`付属品（${days}日×¥3,300）`,acc]);ct2+=acc;
   if(s.trainer){rows.push(['トレーナー講習',P1.trainer]);ct2+=P1.trainer;}
   if(s.owner){rows.push(['オーナー登録',P1.owner]);ct2+=P1.owner;}
-  const hasVio=s.ladiesVio||s.mensVio;const starter=getStarter(s.hige,hasVio,s.cranio);const sp=starter?starter.price:0;
+  const hasVio=s.ladiesVio||s.mensVio,starter=getStarter(s.hige,hasVio,s.cranio),sp=starter?starter.price:0;
   let html=rows.map(([l,p])=>`<div class="summary-row"><span>${l}</span><span class="s-val">¥${p.toLocaleString()}</span></div>`).join('');
   html+=`<div class="summary-row"><span>小計</span><span class="s-val">¥${ct2.toLocaleString()}</span></div>`;
   if(disc>0)html+=`<div class="summary-row discount-row"><span>🎁 割引</span><span class="s-val">－¥${disc.toLocaleString()}</span></div>`;
@@ -655,35 +568,25 @@ function update0(){
   document.getElementById('p0-grand-total').textContent=`¥${grand.toLocaleString()}`;
   document.getElementById('p0-grand-note').textContent=starter?`（講習料 ¥${(ct2-disc).toLocaleString()} ＋ スターター ¥${sp.toLocaleString()}）`:'';
   if(starter){const si=document.getElementById('p0-starter-items');if(si)si.innerHTML=`<div class="starter-item"><span>${starter.label}</span><span class="s-price">¥${starter.price.toLocaleString()}</span></div>`;}
-  grandTotals['p0']=grand;
-  updateLoanPrincipal('l0',grand);
-  // Sync staff restrictions & trainer benefit
-  syncStaffToOwner();
-  updateTrainerNudge();
-  // Refresh trainer benefit cards for all staff
+  grandTotals['p0']=grand;updateLoanPrincipal('l0',grand);
+  syncStaffToOwner();updateTrainerNudge();
   staffTabIds.forEach((tid,i)=>renderTrainerBenefit(tid,staffStates[i]));
   updateCombined();
 }
 
-// ─── UPDATE スタッフ ───
 function updateStaff(tid){
   const arrIdx=staffTabIds.indexOf(tid);if(arrIdx===-1)return;
   const st=staffStates[arrIdx];
   const g=id=>document.getElementById(id);
-
-  // Apply restriction visual state
-  const optKeys=[{rowKey:'hige',prop:'hige'},{rowKey:'ladies-vio',prop:'ladiesVio'},{rowKey:'mens-vio',prop:'mensVio'},{rowKey:'cranio',prop:'cranio'}];
-  optKeys.forEach(({rowKey,prop})=>{
-    const rowEl=g(`s${tid}-${rowKey}`);
-    const badgeEl=g(`s${tid}-${rowKey}-badge`);
-    if(!rowEl)return;
+  const optKeys=[{rk:'hige',prop:'hige'},{rk:'ladies-vio',prop:'ladiesVio'},{rk:'mens-vio',prop:'mensVio'},{rk:'cranio',prop:'cranio'}];
+  optKeys.forEach(({rk,prop})=>{
+    const rowEl=g(`s${tid}-${rk}`),bdgEl=g(`s${tid}-${rk}-badge`);if(!rowEl)return;
     const allowed=ownerHas(prop);
     rowEl.classList.toggle('owner-restricted',!allowed);
     rowEl.classList.toggle('selected',allowed&&st[prop]);
-    if(badgeEl)badgeEl.innerHTML=!allowed?'<span class="badge badge-restricted" style="margin-left:4px">1人目未受講</span>':'';
+    if(bdgEl)bdgEl.innerHTML=!allowed?'<span class="badge badge-restricted" style="margin-left:4px">1人目未受講</span>':'';
   });
-
-  const ct=g(`s${tid}-text-cranio`);if(ct)ct.style.display=st.cranio?'flex':'none';
+  const ctEl=g(`s${tid}-text-cranio`);if(ctEl)ctEl.style.display=st.cranio?'flex':'none';
   const cc=1+[st.hige,st.ladiesVio,st.mensVio,st.cranio].filter(Boolean).length;
   const af=cc*P2.adminFee;
   let days=2;if(st.hige)days++;if(st.ladiesVio)days++;if(st.mensVio)days++;if(st.cranio)days++;
@@ -692,14 +595,15 @@ function updateStaff(tid){
   if(g(`s${tid}-adminfee`))g(`s${tid}-adminfee`).textContent=`¥${af.toLocaleString()}`;
   if(g(`s${tid}-days`))g(`s${tid}-days`).textContent=days;
   if(g(`s${tid}-accessory`))g(`s${tid}-accessory`).textContent=`¥${acc.toLocaleString()}`;
-  let ctTotal=P2.basic+P2.textBasic;const rows=[['基本コース',P2.basic],['テキスト（基本）',P2.textBasic]];
+  let ctTotal=P2.basic+P2.textBasic;
+  const rows=[['基本コース',P2.basic],['テキスト（基本）',P2.textBasic]];
   if(st.hige){rows.push(['ヒゲ',P2.hige]);ctTotal+=P2.hige;}
   if(st.ladiesVio){rows.push(['レディースVIO',P2.ladiesVio]);ctTotal+=P2.ladiesVio;}
   if(st.mensVio){rows.push(['メンズVIO',P2.mensVio]);ctTotal+=P2.mensVio;}
   if(st.cranio){rows.push(['クラニオ',P2.cranio],['テキスト（クラニオ）',P2.textCranio]);ctTotal+=P2.cranio+P2.textCranio;}
   rows.push([`事務手数料（${cc}コース）`,af]);ctTotal+=af;
   rows.push([`付属品（${days}日×¥3,300）`,acc]);ctTotal+=acc;
-  const hasVio=st.ladiesVio||st.mensVio;const starter=getStarter(st.hige,hasVio,st.cranio);const sp=starter?starter.price:0;
+  const hasVio=st.ladiesVio||st.mensVio,starter=getStarter(st.hige,hasVio,st.cranio),sp=starter?starter.price:0;
   let html=rows.map(([l,p])=>`<div class="summary-row"><span>${l}</span><span class="s-val">¥${p.toLocaleString()}</span></div>`).join('');
   html+=`<div class="summary-row"><span>小計</span><span class="s-val">¥${ctTotal.toLocaleString()}</span></div>`;
   if(starter){html+=`<div class="summary-divider"></div>`;html+=`<div class="summary-row starter-row"><span>📦 ${starter.label}</span><span class="s-val">¥${sp.toLocaleString()}</span></div>`;}
@@ -708,16 +612,16 @@ function updateStaff(tid){
   if(g(`s${tid}-grand-total`))g(`s${tid}-grand-total`).textContent=`¥${grand.toLocaleString()}`;
   if(g(`s${tid}-grand-note`))g(`s${tid}-grand-note`).textContent=starter?`（講習料 ¥${ctTotal.toLocaleString()} ＋ スターター ¥${sp.toLocaleString()}）`:'';
   if(starter&&g(`s${tid}-starter-items`))g(`s${tid}-starter-items`).innerHTML=`<div class="starter-item"><span>${starter.label}</span><span class="s-price">¥${starter.price.toLocaleString()}</span></div>`;
-  grandTotals['s'+tid]=grand;
-  updateLoanPrincipal('l'+tid,grand);
-  renderTrainerBenefit(tid,st);
-  updateCombined();
+  grandTotals['s'+tid]=grand;updateLoanPrincipal('l'+tid,grand);
+  renderTrainerBenefit(tid,st);updateCombined();
 }
 
-// ─── RESET ───
 function resetAll(){
   s0.basic=true;s0.hige=false;s0.ladiesVio=false;s0.mensVio=false;s0.cranio=false;s0.trainer=false;s0.owner=false;
-  [...staffTabIds].forEach(tid=>{const b=document.getElementById('tab-btn-'+tid),p=document.getElementById('tab-panel-'+tid);if(b)b.remove();if(p)p.remove();});
+  [...staffTabIds].forEach(tid=>{
+    const b=document.getElementById('tab-btn-'+tid),p=document.getElementById('tab-panel-'+tid);
+    if(b)b.remove();if(p)p.remove();
+  });
   staffStates=[];staffTabIds=[];nextTabId=1;
   Object.keys(grandTotals).forEach(k=>{if(k!=='p0')delete grandTotals[k];});
   Object.keys(loanPrincipals).forEach(k=>{if(k!=='l0')delete loanPrincipals[k];});
@@ -729,7 +633,6 @@ function resetAll(){
   const de=document.getElementById('l0-down');if(de)de.value=0;
   switchTab(0);update0();
 }
-
 update0();
 </script>
 </body>
