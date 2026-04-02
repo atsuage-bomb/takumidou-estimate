@@ -537,6 +537,8 @@ function toggleStaffOpt(tid,key){
 
 function update0(){
   const s=s0;
+  // トレーナー講習の条件（VIO受講）を満たさなくなった場合は自動解除
+  if(s.trainer && !(s.ladiesVio || s.mensVio)) s.trainer = false;
   const sel=(id,v)=>{const el=document.getElementById(id);if(el)el.classList.toggle('selected',v);};
   sel('p0-row-hige',s.hige);sel('p0-row-ladies-vio',s.ladiesVio);sel('p0-row-mens-vio',s.mensVio);
   sel('p0-row-cranio',s.cranio);sel('p0-row-trainer',s.trainer);sel('p0-row-owner',s.owner);
