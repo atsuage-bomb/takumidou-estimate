@@ -3,135 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BWJ東京2026 受講料金シミュレーター</title>
+<title>受講料金シミュレーター</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0d1b2e;
-    --navy-mid: #162438;
-    --gold: #c9a84c;
-    --gold-dim: #8a6e2f;
-    --cream: #faf6ee;
-    --cream-dark: #f0e8d8;
-    --text: #1a1a2e;
-    --text-mid: #4a4a6a;
-    --text-light: #8a8aaa;
-    --green: #2d7a4f;
-    --red: #c0392b;
-    --red-light: #fdecea;
-    --border: #d4c9b0;
-    --shadow: 0 4px 24px rgba(13,27,46,0.10);
-    --shadow-lg: 0 8px 40px rgba(13,27,46,0.16);
+    --navy:#0d1b2e;--navy-mid:#162438;--gold:#c9a84c;--gold-dim:#8a6e2f;
+    --cream:#faf6ee;--cream-dark:#f0e8d8;--text:#1a1a2e;--text-mid:#4a4a6a;
+    --text-light:#8a8aaa;--green:#2d7a4f;--red:#c0392b;--red-light:#fdecea;
+    --border:#d4c9b0;--shadow:0 4px 24px rgba(13,27,46,.10);--shadow-lg:0 8px 40px rgba(13,27,46,.16);
+    --teal:#0e5f6e;--teal-mid:#0d4f5c;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Noto Sans JP', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
 
   /* HEADER */
-  header {
-    background: var(--navy); padding: 16px 20px;
-    display: flex; align-items: center; gap: 12px;
-    position: sticky; top: 0; z-index: 200;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
-  }
-  .logo-mark { width: 36px; height: 36px; border: 2px solid var(--gold); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .logo-mark span { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 700; }
-  .header-title h1 { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--cream); letter-spacing: 0.04em; }
-  .header-title p { font-size: 10px; color: var(--gold); letter-spacing: 0.08em; margin-top: 1px; }
-  .header-reset { margin-left: auto; background: transparent; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); font-family: 'Noto Sans JP', sans-serif; font-size: 12px; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
-  .header-reset:hover { background: rgba(201,168,76,0.15); }
+  header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.3);}
+  .logo-mark{width:36px;height:36px;border:2px solid var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .logo-mark span{color:var(--gold);font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;}
+  .header-title h1{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:var(--cream);letter-spacing:.04em;}
+  .header-title p{font-size:10px;color:var(--gold);letter-spacing:.08em;margin-top:1px;}
+  .header-reset{margin-left:auto;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);font-family:'Noto Sans JP',sans-serif;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .2s;}
+  .header-reset:hover{background:rgba(201,168,76,.15);}
 
   /* TABS */
-  .tabs-bar { background: var(--navy-mid); display: flex; align-items: stretch; border-bottom: 1px solid rgba(201,168,76,0.2); overflow-x: auto; position: sticky; top: 57px; z-index: 190; }
-  .tab-btn { flex-shrink: 0; min-width: 110px; padding: 12px 14px; background: transparent; border: none; color: rgba(250,246,238,0.5); font-family: 'Noto Sans JP', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; }
-  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-  .tab-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-  .tab-badge { display: inline-block; background: var(--gold); color: var(--navy); font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 8px; margin-left: 4px; vertical-align: middle; }
-  .tab-close { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 50%; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 9px; margin-left: 5px; cursor: pointer; transition: all 0.15s; vertical-align: middle; }
-  .tab-close:hover { background: rgba(255,80,80,0.5); color: #fff; }
-  .tab-add-btn { flex-shrink: 0; padding: 10px 16px; background: transparent; border: none; border-left: 1px solid rgba(255,255,255,0.08); color: rgba(201,168,76,0.6); font-size: 20px; cursor: pointer; transition: all 0.2s; display: none; align-items: center; }
-  .tab-add-btn.visible { display: flex; }
-  .tab-add-btn:hover { color: var(--gold); background: rgba(201,168,76,0.08); }
+  .tabs-bar{background:var(--navy-mid);display:flex;align-items:stretch;border-bottom:1px solid rgba(201,168,76,.2);overflow-x:auto;position:sticky;top:57px;z-index:190;}
+  .tab-btn{flex-shrink:0;min-width:110px;padding:12px 14px;background:transparent;border:none;color:rgba(250,246,238,.5);font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
+  .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+  .tab-btn:disabled{opacity:.3;cursor:not-allowed;}
+  .tab-btn.combined-tab{color:rgba(100,220,180,.6);}
+  .tab-btn.combined-tab.active{color:#4de8b8;border-bottom-color:#4de8b8;}
+  .tab-badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px;margin-left:4px;vertical-align:middle;}
+  .tab-close{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:rgba(255,255,255,.15);color:rgba(255,255,255,.6);font-size:9px;margin-left:5px;cursor:pointer;transition:all .15s;vertical-align:middle;}
+  .tab-close:hover{background:rgba(255,80,80,.5);color:#fff;}
+  .tab-add-btn{flex-shrink:0;padding:10px 16px;background:transparent;border:none;border-left:1px solid rgba(255,255,255,.08);color:rgba(201,168,76,.6);font-size:20px;cursor:pointer;transition:all .2s;display:none;align-items:center;}
+  .tab-add-btn.visible{display:flex;}
+  .tab-add-btn:hover{color:var(--gold);background:rgba(201,168,76,.08);}
 
   /* LAYOUT */
-  .main-wrap { max-width: 860px; margin: 0 auto; padding: 18px 14px 48px; }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; animation: fadeIn 0.2s ease; }
+  .main-wrap{max-width:860px;margin:0 auto;padding:18px 14px 48px;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;animation:fadeIn .2s ease;}
 
   /* CARD */
-  .card { background: #fff; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow); margin-bottom: 14px; overflow: hidden; }
-  .card-head { background: var(--navy); padding: 11px 16px; display: flex; align-items: center; gap: 9px; }
-  .card-head-icon { width: 26px; height: 26px; background: rgba(201,168,76,0.2); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
-  .card-head h2 { font-family: 'Noto Serif JP', serif; font-size: 13px; font-weight: 600; color: var(--cream); letter-spacing: 0.04em; }
-  .card-head .card-sub { font-size: 10px; color: var(--gold); margin-left: auto; letter-spacing: 0.04em; }
-  .card-body { padding: 14px 16px; }
+  .card{background:#fff;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;}
+  .card-head{background:var(--navy);padding:11px 16px;display:flex;align-items:center;gap:9px;}
+  .card-head-icon{width:26px;height:26px;background:rgba(201,168,76,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+  .card-head h2{font-family:'Noto Serif JP',serif;font-size:13px;font-weight:600;color:var(--cream);letter-spacing:.04em;}
+  .card-head .card-sub{font-size:10px;color:var(--gold);margin-left:auto;letter-spacing:.04em;}
+  .card-head.loan-head{background:var(--teal);}
+  .card-head.loan-head .card-head-icon{background:rgba(77,232,184,.15);}
+  .card-body{padding:14px 16px;}
 
-  /* COURSE ROW */
-  .course-row { display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 8px; margin-bottom: 5px; border: 1.5px solid transparent; transition: all 0.18s; cursor: pointer; user-select: none; }
-  .course-row:last-child { margin-bottom: 0; }
-  .course-row:hover { background: var(--cream); }
-  .course-row.selected { background: #f0f7ff; border-color: #3b82f6; }
-  .course-row.auto-selected { background: #f8f4ea; border-color: var(--gold-dim); opacity: 0.85; }
-  .course-check { width: 20px; height: 20px; flex-shrink: 0; border: 2px solid #c0c0d0; border-radius: 4px; display: flex; align-items: center; justify-content: center; transition: all 0.18s; background: #fff; }
-  .course-row.selected .course-check { background: #3b82f6; border-color: #3b82f6; }
-  .course-row.auto-selected .course-check { background: var(--gold-dim); border-color: var(--gold-dim); }
-  .check-mark { color: #fff; font-size: 12px; font-weight: 700; display: none; }
-  .course-row.selected .check-mark, .course-row.auto-selected .check-mark { display: block; }
-  .course-info { flex: 1; min-width: 0; }
-  .course-name { font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
-  .course-sub { font-size: 11px; color: var(--text-mid); margin-top: 2px; }
-  .badge { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 9px; letter-spacing: 0.02em; }
-  .badge-required { background: #fff0f0; color: var(--red); }
-  .badge-option { background: #f0f4ff; color: #3b5ee8; }
-  .badge-auto { background: #fdf0cc; color: #8a6500; }
-  .badge-special { background: #f0fff4; color: var(--green); }
-  .course-price { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--text); white-space: nowrap; text-align: right; }
+  /* COURSE ROWS */
+  .course-row{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:8px;margin-bottom:5px;border:1.5px solid transparent;transition:all .18s;cursor:pointer;user-select:none;}
+  .course-row:last-child{margin-bottom:0;}
+  .course-row:hover{background:var(--cream);}
+  .course-row.selected{background:#f0f7ff;border-color:#3b82f6;}
+  .course-row.auto-selected{background:#f8f4ea;border-color:var(--gold-dim);opacity:.85;}
+  .course-check{width:20px;height:20px;flex-shrink:0;border:2px solid #c0c0d0;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:all .18s;background:#fff;}
+  .course-row.selected .course-check{background:#3b82f6;border-color:#3b82f6;}
+  .course-row.auto-selected .course-check{background:var(--gold-dim);border-color:var(--gold-dim);}
+  .check-mark{color:#fff;font-size:12px;font-weight:700;display:none;}
+  .course-row.selected .check-mark,.course-row.auto-selected .check-mark{display:block;}
+  .course-info{flex:1;min-width:0;}
+  .course-name{font-size:13px;font-weight:500;display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+  .course-sub{font-size:11px;color:var(--text-mid);margin-top:2px;}
+  .badge{font-size:10px;font-weight:700;padding:1px 6px;border-radius:9px;letter-spacing:.02em;}
+  .badge-required{background:#fff0f0;color:var(--red);}
+  .badge-option{background:#f0f4ff;color:#3b5ee8;}
+  .badge-auto{background:#fdf0cc;color:#8a6500;}
+  .badge-special{background:#f0fff4;color:var(--green);}
+  .course-price{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;text-align:right;}
 
   /* NOTICE */
-  .notice { background: var(--cream-dark); border-left: 3px solid var(--gold); border-radius: 0 6px 6px 0; padding: 9px 12px; font-size: 12px; color: var(--text-mid); margin-bottom: 12px; line-height: 1.6; }
+  .notice{background:var(--cream-dark);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:9px 12px;font-size:12px;color:var(--text-mid);margin-bottom:12px;line-height:1.6;}
 
   /* DISCOUNT BAR */
-  .discount-bar { background: linear-gradient(135deg, #e8f5ed, #d4eed9); border: 1.5px solid #a8d8b2; border-radius: 8px; padding: 9px 12px; display: flex; align-items: center; gap: 9px; margin-top: 10px; }
-  .disc-icon { font-size: 16px; }
-  .disc-text { flex: 1; font-size: 12px; color: var(--green); font-weight: 500; }
-  .disc-amount { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 700; color: var(--green); }
+  .discount-bar{background:linear-gradient(135deg,#e8f5ed,#d4eed9);border:1.5px solid #a8d8b2;border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:9px;margin-top:10px;}
+  .disc-icon{font-size:16px;}.disc-text{flex:1;font-size:12px;color:var(--green);font-weight:500;}
+  .disc-amount{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--green);}
 
   /* DAYS DISPLAY */
-  .days-display { display: inline-flex; align-items: center; gap: 5px; background: var(--cream-dark); border: 1px solid var(--border); border-radius: 18px; padding: 4px 12px; font-size: 12px; color: var(--text-mid); margin: 5px 5px 4px 0; }
-  .days-display strong { color: var(--navy); font-size: 13px; }
+  .days-display{display:inline-flex;align-items:center;gap:5px;background:var(--cream-dark);border:1px solid var(--border);border-radius:18px;padding:4px 12px;font-size:12px;color:var(--text-mid);margin:5px 5px 4px 0;}
+  .days-display strong{color:var(--navy);font-size:13px;}
 
   /* ALERT */
-  .alert { background: var(--red-light); border: 1px solid #f5c6c2; border-radius: 8px; padding: 9px 12px; font-size: 12px; color: var(--red); margin-bottom: 8px; display: none; }
-  .alert.show { display: block; }
+  .alert{background:var(--red-light);border:1px solid #f5c6c2;border-radius:8px;padding:9px 12px;font-size:12px;color:var(--red);margin-bottom:8px;display:none;}
+  .alert.show{display:block;}
 
   /* STARTER BOX */
-  .starter-box { background: #fffbf0; border: 1.5px solid var(--gold-dim); border-radius: 8px; padding: 11px 14px; margin-top: 2px; }
-  .starter-box h3 { font-size: 11px; font-weight: 700; color: var(--gold-dim); margin-bottom: 7px; letter-spacing: 0.05em; }
-  .starter-item { display: flex; justify-content: space-between; font-size: 13px; padding: 3px 0; border-bottom: 1px dashed #e8d9a0; }
-  .starter-item:last-child { border-bottom: none; }
-  .starter-item .s-price { font-family: 'Noto Serif JP', serif; font-weight: 600; }
+  .starter-box{background:#fffbf0;border:1.5px solid var(--gold-dim);border-radius:8px;padding:11px 14px;margin-top:2px;}
+  .starter-box h3{font-size:11px;font-weight:700;color:var(--gold-dim);margin-bottom:7px;letter-spacing:.05em;}
+  .starter-item{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dashed #e8d9a0;}
+  .starter-item:last-child{border-bottom:none;}
+  .starter-item .s-price{font-family:'Noto Serif JP',serif;font-weight:600;}
 
-  /* SUMMARY CARD – NOT sticky, normal flow */
-  .summary-card { background: var(--navy); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-lg); margin-top: 20px; margin-bottom: 8px; }
-  .summary-head { background: var(--gold); padding: 10px 16px; }
-  .summary-head span { font-size: 13px; font-weight: 700; color: var(--navy); }
-  .summary-rows { padding: 10px 16px 4px; }
-  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 12px; color: rgba(250,246,238,0.7); border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .summary-row:last-child { border-bottom: none; }
-  .summary-row.discount-row { color: #7de8a0; }
-  .summary-row.starter-row { color: rgba(201,168,76,0.85); }
-  .summary-row .s-val { font-family: 'Noto Serif JP', serif; font-size: 14px; font-weight: 600; color: var(--cream); }
-  .summary-row.discount-row .s-val { color: #7de8a0; font-size: 13px; }
-  .summary-row.starter-row .s-val { color: var(--gold); }
-  .summary-divider { height: 1px; background: rgba(201,168,76,0.25); margin: 5px 0; }
-  .grand-total-area { background: rgba(0,0,0,0.25); margin: 6px 16px 14px; border-radius: 8px; padding: 10px 14px; text-align: center; }
-  .grand-total-label { font-size: 10px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 3px; }
-  .grand-total-num { font-family: 'Noto Serif JP', serif; font-size: 30px; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
-  .grand-total-note { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  /* SUMMARY CARD */
+  .summary-card{background:var(--navy);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:20px;margin-bottom:8px;}
+  .summary-head{background:var(--gold);padding:10px 16px;}
+  .summary-head span{font-size:13px;font-weight:700;color:var(--navy);}
+  .summary-rows{padding:10px 16px 4px;}
+  .summary-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;color:rgba(250,246,238,.7);border-bottom:1px solid rgba(255,255,255,.06);}
+  .summary-row:last-child{border-bottom:none;}
+  .summary-row.discount-row{color:#7de8a0;}
+  .summary-row.starter-row{color:rgba(201,168,76,.85);}
+  .summary-row .s-val{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:var(--cream);}
+  .summary-row.discount-row .s-val{color:#7de8a0;font-size:13px;}
+  .summary-row.starter-row .s-val{color:var(--gold);}
+  .summary-divider{height:1px;background:rgba(201,168,76,.25);margin:5px 0;}
+  .grand-total-area{background:rgba(0,0,0,.25);margin:6px 16px 14px;border-radius:8px;padding:10px 14px;text-align:center;}
+  .grand-total-label{font-size:10px;color:var(--gold);letter-spacing:.1em;margin-bottom:3px;}
+  .grand-total-num{font-family:'Noto Serif JP',serif;font-size:30px;font-weight:700;color:#fff;letter-spacing:.02em;}
+  .grand-total-note{font-size:10px;color:rgba(255,255,255,.45);margin-top:3px;}
 
-  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
-  .card { animation: fadeIn 0.22s ease both; }
-  @media (min-width: 600px) { .main-wrap { padding: 22px 22px 56px; } .grand-total-num { font-size: 38px; } }
+  /* LOAN CALCULATOR */
+  .loan-card{border-color:#1a7a8a;}
+  .loan-principal-bar{background:rgba(14,95,110,.08);border:1px solid rgba(14,95,110,.25);border-radius:8px;padding:9px 14px;margin-bottom:14px;font-size:12px;color:var(--teal-mid);display:flex;align-items:center;justify-content:space-between;}
+  .loan-principal-bar strong{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:var(--teal);}
+  .loan-form{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
+  @media(max-width:500px){.loan-form{grid-template-columns:1fr 1fr;}}
+  .loan-field label{display:block;font-size:11px;color:var(--text-mid);margin-bottom:4px;font-weight:500;}
+  .loan-field input,.loan-field select{width:100%;padding:7px 10px;border:1.5px solid var(--border);border-radius:7px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--text);background:#fff;outline:none;transition:border-color .15s;}
+  .loan-field input:focus,.loan-field select:focus{border-color:var(--teal);}
+  .loan-field .input-wrap{display:flex;align-items:center;gap:5px;}
+  .loan-field .input-wrap input{flex:1;}
+  .loan-field .unit{font-size:12px;color:var(--text-mid);white-space:nowrap;}
+  .loan-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .loan-result-item{background:var(--teal-mid);border-radius:8px;padding:10px 12px;}
+  .loan-result-item.highlight{background:var(--teal);}
+  .lri-label{font-size:10px;color:rgba(255,255,255,.55);margin-bottom:3px;}
+  .lri-value{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:#fff;}
+  .loan-result-item.highlight .lri-value{font-size:20px;color:#4de8b8;}
+  .loan-total-bar{background:rgba(14,95,110,.1);border:1px solid rgba(14,95,110,.2);border-radius:8px;padding:9px 14px;margin-top:10px;font-size:12px;color:var(--teal-mid);display:flex;justify-content:space-between;align-items:center;}
+  .loan-total-bar strong{font-family:'Noto Serif JP',serif;font-size:15px;color:var(--teal);}
+  .loan-empty{text-align:center;padding:20px;font-size:12px;color:var(--text-light);}
+
+  /* COMBINED TAB */
+  .combined-card{background:var(--navy);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:14px;}
+  .combined-head{background:linear-gradient(135deg,#0e5f6e,#0a4352);padding:12px 16px;display:flex;align-items:center;gap:10px;}
+  .combined-head h2{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:#4de8b8;letter-spacing:.04em;}
+  .combined-rows{padding:10px 16px 6px;}
+  .combined-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:13px;color:rgba(250,246,238,.8);border-bottom:1px solid rgba(255,255,255,.07);}
+  .combined-row:last-child{border-bottom:none;}
+  .combined-row .c-label{display:flex;align-items:center;gap:6px;}
+  .combined-row .c-val{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:600;color:var(--cream);}
+  .combined-row.total-row{font-size:15px;font-weight:700;color:var(--cream);padding-top:12px;border-top:1px solid rgba(77,232,184,.3);margin-top:4px;}
+  .combined-row.total-row .c-val{font-size:24px;color:#4de8b8;}
+  .combined-grand-area{background:rgba(0,0,0,.3);margin:4px 16px 16px;border-radius:8px;padding:12px;text-align:center;}
+  .combined-grand-label{font-size:10px;color:#4de8b8;letter-spacing:.1em;margin-bottom:4px;}
+  .combined-grand-num{font-family:'Noto Serif JP',serif;font-size:36px;font-weight:700;color:#fff;}
+  .combined-note{background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:8px;padding:10px 14px;margin:0 16px 16px;font-size:12px;color:#e88;line-height:1.6;}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .card{animation:fadeIn .22s ease both;}
+  @media(min-width:600px){.main-wrap{padding:22px 22px 56px;}.grand-total-num{font-size:38px;}}
 </style>
 </head>
 <body>
@@ -139,7 +165,7 @@
 <header>
   <div class="logo-mark"><span>料</span></div>
   <div class="header-title">
-    <h1>BWJ東京2026 受講料金シミュレーター</h1>
+    <h1>受講料金シミュレーター</h1>
     <p>COURSE FEE CALCULATOR</p>
   </div>
   <button class="header-reset" onclick="resetAll()">リセット</button>
@@ -149,64 +175,32 @@
   <button class="tab-btn active" id="tab-btn-0" onclick="switchTab(0)">👤 1人目</button>
   <button class="tab-btn" id="tab-btn-placeholder" disabled>👥 2人目（スタッフ）</button>
   <button class="tab-add-btn" id="add-staff-btn" onclick="addStaff()" title="スタッフを追加">＋</button>
+  <button class="tab-btn combined-tab" id="tab-btn-combined" onclick="switchTab('combined')">📊 合算</button>
 </div>
 
 <div class="main-wrap">
 
   <!-- ═════ 1人目 ═════ -->
   <div class="tab-panel active" id="tab-panel-0">
-
-    <div class="notice">
-      <strong>📌 ご案内</strong>　初めて受講されるお客様は、必ず<strong>基本コース</strong>をご選択ください。オプションコースは単独では受講できません。
-    </div>
+    <div class="notice"><strong>📌 ご案内</strong>　初めて受講されるお客様は、必ず<strong>基本コース</strong>をご選択ください。オプションコースは単独では受講できません。</div>
 
     <div class="card">
       <div class="card-head"><div class="card-head-icon">📚</div><h2>基本コース</h2><span class="card-sub">必須選択</span></div>
       <div class="card-body">
-        <div class="course-row selected" id="p0-row-basic">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">基本コース <span class="badge badge-required">必須</span></div><div class="course-sub">受講日数 2日</div></div>
-          <div><div class="course-price">¥220,000</div></div>
-        </div>
-        <div class="course-row auto-selected">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">テキスト（基本）<span class="badge badge-auto">自動付帯</span></div></div>
-          <div><div class="course-price">¥11,000</div></div>
-        </div>
+        <div class="course-row selected" id="p0-row-basic"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">基本コース <span class="badge badge-required">必須</span></div><div class="course-sub">受講日数 2日</div></div><div><div class="course-price">¥220,000</div></div></div>
+        <div class="course-row auto-selected"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">テキスト（基本）<span class="badge badge-auto">自動付帯</span></div></div><div><div class="course-price">¥11,000</div></div></div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-head"><div class="card-head-icon">✨</div><h2>オプションコース</h2><span class="card-sub">任意選択</span></div>
       <div class="card-body">
-        <div class="notice" style="margin-bottom:10px">
-          オプションを <strong>2個</strong> 選ぶと <strong style="color:var(--green)">¥22,000 割引</strong>、<strong>3個以上</strong> 選ぶと <strong style="color:var(--green)">¥44,000 割引</strong> が自動適用されます。
-        </div>
-        <div class="course-row" id="p0-row-hige" onclick="toggleOpt0('hige')">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">ヒゲ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div>
-          <div><div class="course-price">¥110,000</div></div>
-        </div>
-        <div class="course-row" id="p0-row-ladies-vio" onclick="toggleOpt0('ladies-vio')">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">レディースVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div>
-          <div><div class="course-price">¥110,000</div></div>
-        </div>
-        <div class="course-row" id="p0-row-mens-vio" onclick="toggleOpt0('mens-vio')">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">メンズVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div>
-          <div><div class="course-price">¥110,000</div></div>
-        </div>
-        <div class="course-row" id="p0-row-cranio" onclick="toggleOpt0('cranio')">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">クラニオ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div>
-          <div><div class="course-price">¥110,000</div></div>
-        </div>
-        <div class="course-row auto-selected" id="p0-row-text-cranio" style="display:none">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">テキスト（クラニオ）<span class="badge badge-auto">自動付帯</span></div></div>
-          <div><div class="course-price">¥11,000</div></div>
-        </div>
+        <div class="notice" style="margin-bottom:10px">オプションを <strong>2個</strong> 選ぶと <strong style="color:var(--green)">¥22,000 割引</strong>、<strong>3個以上</strong> 選ぶと <strong style="color:var(--green)">¥44,000 割引</strong> が自動適用されます。</div>
+        <div class="course-row" id="p0-row-hige" onclick="toggleOpt0('hige')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">ヒゲ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥110,000</div></div></div>
+        <div class="course-row" id="p0-row-ladies-vio" onclick="toggleOpt0('ladies-vio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">レディースVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥110,000</div></div></div>
+        <div class="course-row" id="p0-row-mens-vio" onclick="toggleOpt0('mens-vio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">メンズVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥110,000</div></div></div>
+        <div class="course-row" id="p0-row-cranio" onclick="toggleOpt0('cranio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">クラニオ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥110,000</div></div></div>
+        <div class="course-row auto-selected" id="p0-row-text-cranio" style="display:none"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">テキスト（クラニオ）<span class="badge badge-auto">自動付帯</span></div></div><div><div class="course-price">¥11,000</div></div></div>
       </div>
     </div>
 
@@ -214,39 +208,22 @@
       <div class="card-head"><div class="card-head-icon">🏆</div><h2>追加オプション</h2></div>
       <div class="card-body">
         <div class="alert" id="p0-alert-trainer">トレーナー講習には「基本コース＋VIO（いずれか）」の受講が必要です。</div>
-        <div class="course-row" id="p0-row-trainer" onclick="toggleTrainer()">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">トレーナー講習 <span class="badge badge-special">上位コース</span></div><div class="course-sub">基本コース＋VIO受講が最低条件</div></div>
-          <div><div class="course-price">¥495,000</div></div>
-        </div>
-        <div class="course-row" id="p0-row-owner" onclick="toggleOwner()">
-          <div class="course-check"><span class="check-mark">✓</span></div>
-          <div class="course-info"><div class="course-name">オーナー登録 <span class="badge badge-special">特典あり</span></div><div class="course-sub">選択すると2人目以降のスタッフタブが追加されます</div></div>
-          <div><div class="course-price">¥110,000</div></div>
-        </div>
+        <div class="course-row" id="p0-row-trainer" onclick="toggleTrainer()"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">トレーナー講習 <span class="badge badge-special">上位コース</span></div><div class="course-sub">基本コース＋VIO受講が条件</div></div><div><div class="course-price">¥495,000</div></div></div>
+        <div class="course-row" id="p0-row-owner" onclick="toggleOwner()"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">オーナー登録 <span class="badge badge-special">特典あり</span></div><div class="course-sub">選択すると2人目以降のスタッフタブが追加されます</div></div><div><div class="course-price">¥110,000</div></div></div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-head"><div class="card-head-icon">🧮</div><h2>料金内訳</h2></div>
       <div class="card-body">
-        <div>
-          <span class="days-display">受講日数合計：<strong id="p0-days">2</strong> 日</span>
-          <span class="days-display">付属品：<strong id="p0-accessory">¥6,600</strong></span>
-        </div>
-        <div id="p0-discount-bar" class="discount-bar" style="display:none">
-          <span class="disc-icon">🎁</span>
-          <span class="disc-text" id="p0-discount-text">割引</span>
-          <span class="disc-amount" id="p0-discount-amount">－¥0</span>
-        </div>
+        <div><span class="days-display">受講日数合計：<strong id="p0-days">2</strong> 日</span><span class="days-display">付属品：<strong id="p0-accessory">¥6,600</strong></span></div>
+        <div id="p0-discount-bar" class="discount-bar" style="display:none"><span class="disc-icon">🎁</span><span class="disc-text" id="p0-discount-text">割引</span><span class="disc-amount" id="p0-discount-amount">－¥0</span></div>
       </div>
     </div>
 
     <div class="card">
       <div class="card-head"><div class="card-head-icon">📦</div><h2>スターターセット</h2><span class="card-sub">コースに応じて自動選択</span></div>
-      <div class="card-body">
-        <div class="starter-box"><h3>📋 対象スターターセット</h3><div id="p0-starter-items"></div></div>
-      </div>
+      <div class="card-body"><div class="starter-box"><h3>📋 対象スターターセット</h3><div id="p0-starter-items"></div></div></div>
     </div>
 
     <div class="summary-card">
@@ -259,348 +236,341 @@
       </div>
     </div>
 
+    <!-- LOAN 1人目 -->
+    <div class="card loan-card">
+      <div class="card-head loan-head"><div class="card-head-icon">💳</div><h2>スクールローン シミュレーター</h2><span class="card-sub">1人目</span></div>
+      <div class="card-body">
+        <div class="loan-principal-bar">ローン対象額（講習料＋スターター）<strong id="l0-principal">¥―</strong></div>
+        <div class="loan-form">
+          <div class="loan-field"><label>頭金</label><div class="input-wrap"><input type="number" id="l0-down" value="0" min="0" placeholder="0" oninput="calcLoan('l0')"><span class="unit">円</span></div></div>
+          <div class="loan-field"><label>アドオン料率</label><select id="l0-rate" onchange="calcLoan('l0')"><option value="0.60">0.60%</option><option value="0.65">0.65%</option><option value="0.70" selected>0.70%</option><option value="0.75">0.75%</option><option value="0.80">0.80%</option><option value="0.85">0.85%</option><option value="0.90">0.90%</option><option value="0.95">0.95%</option><option value="1.00">1.00%</option></select></div>
+          <div class="loan-field"><label>お支払い回数</label><select id="l0-count" onchange="calcLoan('l0')"><option value="6">6回</option><option value="10">10回</option><option value="12">12回</option><option value="15">15回</option><option value="18">18回</option><option value="20">20回</option><option value="24">24回</option><option value="30">30回</option><option value="36" selected>36回</option><option value="48">48回</option><option value="60">60回</option></select></div>
+        </div>
+        <div id="l0-result"></div>
+      </div>
+    </div>
   </div>
 
   <!-- ═════ スタッフパネル挿入先 ═════ -->
   <div id="staff-panels-container"></div>
 
-</div>
+  <!-- ═════ 合算タブ ═════ -->
+  <div class="tab-panel" id="tab-panel-combined">
+    <div class="combined-card">
+      <div class="combined-head"><div class="card-head-icon" style="background:rgba(77,232,184,.15)">📊</div><h2>お支払い合計 合算</h2></div>
+      <div class="combined-rows" id="combined-rows"><div style="padding:20px;text-align:center;font-size:12px;color:var(--text-light)">各タブでコースを選択すると合算が表示されます</div></div>
+      <div class="combined-grand-area">
+        <div class="combined-grand-label">全員 お支払い合計（税込）</div>
+        <div class="combined-grand-num" id="combined-grand-total">―</div>
+      </div>
+      <div class="combined-note">⚠️ <strong>スクールローンについて</strong>　ローンは受講者個人のお支払い額が対象となります。合算額はローン申込には使用できません。各人のローンシミュレーションは各タブをご確認ください。</div>
+    </div>
+  </div>
+
+</div><!-- /main-wrap -->
 
 <script>
 // ─── PRICES ───
-const P1 = { basic:220000, textBasic:11000, hige:110000, ladiesVio:110000, mensVio:110000, cranio:110000, textCranio:11000, accessory:3300, trainer:495000, owner:110000 };
-const P2 = { basic:88000, textBasic:11000, hige:44000, ladiesVio:44000, mensVio:44000, cranio:44000, textCranio:11000, accessory:3300, adminFee:11000 };
-const STARTERS = [
-  { label:'スターター（基本）',                      price:144100, hige:false, vio:false, cranio:false },
-  { label:'スターター（基本＋ヒゲ）',                price:154000, hige:true,  vio:false, cranio:false },
-  { label:'スターター（基本＋VIO）',                 price:152020, hige:false, vio:true,  cranio:false },
-  { label:'スターター（基本＋クラニオ）',            price:166100, hige:false, vio:false, cranio:true  },
-  { label:'スターター（基本＋ヒゲ＋クラニオ）',     price:176000, hige:true,  vio:false, cranio:true  },
-  { label:'スターター（基本＋VIO＋クラニオ）',      price:174020, hige:false, vio:true,  cranio:true  },
-  { label:'スターター（基本＋ヒゲ＋VIO）',          price:161920, hige:true,  vio:true,  cranio:false },
-  { label:'スターター（基本＋ヒゲ＋VIO＋クラニオ）',price:183920, hige:true,  vio:true,  cranio:true  },
+const P1={basic:220000,textBasic:11000,hige:110000,ladiesVio:110000,mensVio:110000,cranio:110000,textCranio:11000,accessory:3300,trainer:495000,owner:110000};
+const P2={basic:88000,textBasic:11000,hige:44000,ladiesVio:44000,mensVio:44000,cranio:44000,textCranio:11000,accessory:3300,adminFee:11000};
+const STARTERS=[
+  {label:'スターター（基本）',price:144100,hige:false,vio:false,cranio:false},
+  {label:'スターター（基本＋ヒゲ）',price:154000,hige:true,vio:false,cranio:false},
+  {label:'スターター（基本＋VIO）',price:152020,hige:false,vio:true,cranio:false},
+  {label:'スターター（基本＋クラニオ）',price:166100,hige:false,vio:false,cranio:true},
+  {label:'スターター（基本＋ヒゲ＋クラニオ）',price:176000,hige:true,vio:false,cranio:true},
+  {label:'スターター（基本＋VIO＋クラニオ）',price:174020,hige:false,vio:true,cranio:true},
+  {label:'スターター（基本＋ヒゲ＋VIO）',price:161920,hige:true,vio:true,cranio:false},
+  {label:'スターター（基本＋ヒゲ＋VIO＋クラニオ）',price:183920,hige:true,vio:true,cranio:true},
 ];
-const getStarter = (h,v,c) => STARTERS.find(s => s.hige===h && s.vio===v && s.cranio===c);
+const getStarter=(h,v,c)=>STARTERS.find(s=>s.hige===h&&s.vio===v&&s.cranio===c);
 
 // ─── STATE ───
-const s0 = { basic:true, hige:false, ladiesVio:false, mensVio:false, cranio:false, trainer:false, owner:false };
-let staffStates = [];  // state for each staff tab
-let staffTabIds = [];  // tab-index array (1,2,3...)
-let nextTabId = 1;
+const s0={basic:true,hige:false,ladiesVio:false,mensVio:false,cranio:false,trainer:false,owner:false};
+let staffStates=[];
+let staffTabIds=[];
+let nextTabId=1;
+
+// Grand totals for combined view: key→{label,courses,starter,total}
+const grandTotals={};
+
+// Loan principals: loanPrefix→amount
+const loanPrincipals={l0:0};
 
 // ─── TABS ───
-let currentTab = 0;
-function switchTab(id) {
-  currentTab = id;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  const btn = document.getElementById('tab-btn-' + id);
-  const pnl = document.getElementById('tab-panel-' + id);
-  if (btn) btn.classList.add('active');
-  if (pnl) pnl.classList.add('active');
+let currentTab=0;
+function switchTab(id){
+  currentTab=id;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  const btnId='tab-btn-'+(id==='combined'?'combined':id);
+  const pnlId='tab-panel-'+(id==='combined'?'combined':id);
+  const btn=document.getElementById(btnId);
+  const pnl=document.getElementById(pnlId);
+  if(btn)btn.classList.add('active');
+  if(pnl)pnl.classList.add('active');
 }
 
-// ─── ADD STAFF ───
-function addStaff() {
-  const tid = nextTabId++;
-  staffStates.push({ basic:true, hige:false, ladiesVio:false, mensVio:false, cranio:false });
-  staffTabIds.push(tid);
-  const arrIdx = staffStates.length - 1;
+// ─── LOAN CALCULATOR ───
+function calcLoan(prefix){
+  const principal=loanPrincipals[prefix]||0;
+  const downEl=document.getElementById(prefix+'-down');
+  const rateEl=document.getElementById(prefix+'-rate');
+  const countEl=document.getElementById(prefix+'-count');
+  if(!downEl||!rateEl||!countEl)return;
+  const down=Math.max(0,parseInt(downEl.value)||0);
+  const rate=parseFloat(rateEl.value)||0.70;
+  const count=parseInt(countEl.value)||36;
+  const resultEl=document.getElementById(prefix+'-result');
+  if(!resultEl)return;
+  if(principal<=0){resultEl.innerHTML='<div class="loan-empty">コースを選択するとローン計算が表示されます</div>';return;}
+  const balance=principal-down;
+  if(balance<=0){resultEl.innerHTML='<div class="loan-empty">頭金がローン対象額を超えています</div>';return;}
+  const fee=Math.round(balance*(rate/100)*count);
+  const totalPay=balance+fee;
+  const monthly=Math.floor(totalPay/count/100)*100;
+  const first=totalPay-monthly*(count-1);
+  const now=new Date();
+  const fm=new Date(now.getFullYear(),now.getMonth()+1,1);
+  const lm=new Date(now.getFullYear(),now.getMonth()+count,1);
+  const fmt=d=>`${d.getFullYear()}年${String(d.getMonth()+1).padStart(2,'0')}月`;
+  resultEl.innerHTML=`
+    <div class="loan-result-grid">
+      <div class="loan-result-item"><div class="lri-label">残金（ローン元金）</div><div class="lri-value">¥${balance.toLocaleString()}</div></div>
+      <div class="loan-result-item"><div class="lri-label">分割払い手数料</div><div class="lri-value">¥${fee.toLocaleString()}</div></div>
+      <div class="loan-result-item"><div class="lri-label">第1回お支払い月</div><div class="lri-value" style="font-size:14px">${fmt(fm)}</div></div>
+      <div class="loan-result-item"><div class="lri-label">最終回お支払い月</div><div class="lri-value" style="font-size:14px">${fmt(lm)}</div></div>
+      <div class="loan-result-item highlight"><div class="lri-label">第1回お支払い金額</div><div class="lri-value">¥${first.toLocaleString()}</div></div>
+      <div class="loan-result-item highlight"><div class="lri-label">第2回以降 毎月</div><div class="lri-value">¥${monthly.toLocaleString()}</div></div>
+    </div>
+    <div class="loan-total-bar"><span>分割支払金合計（頭金除く）</span><strong>¥${totalPay.toLocaleString()}</strong></div>`;
+}
 
-  // Build tab button
-  const tabsBar = document.getElementById('tabs-bar');
-  const addBtn  = document.getElementById('add-staff-btn');
-  const ph      = document.getElementById('tab-btn-placeholder');
+function updateLoanPrincipal(prefix,amount){
+  loanPrincipals[prefix]=amount;
+  const el=document.getElementById(prefix+'-principal');
+  if(el)el.textContent='¥'+amount.toLocaleString();
+  calcLoan(prefix);
+}
 
-  if (ph) {
-    ph.id = 'tab-btn-' + tid;
-    ph.disabled = false;
-    ph.innerHTML = `👥 ${arrIdx+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${tid})">✕</span>`;
-    ph.onclick = () => switchTab(tid);
-  } else {
-    const btn = document.createElement('button');
-    btn.className = 'tab-btn';
-    btn.id = 'tab-btn-' + tid;
-    btn.innerHTML = `👥 ${arrIdx+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${tid})">✕</span>`;
-    btn.onclick = () => switchTab(tid);
-    tabsBar.insertBefore(btn, addBtn);
+// ─── COMBINED ───
+function updateCombined(){
+  const entries=[];
+  const gt0=grandTotals['p0'];
+  if(gt0!=null)entries.push({label:'👤 1人目',total:gt0});
+  staffTabIds.forEach((tid,i)=>{
+    const gt=grandTotals['s'+tid];
+    if(gt!=null)entries.push({label:`👥 ${i+2}人目（スタッフ）`,total:gt});
+  });
+  if(entries.length===0){
+    document.getElementById('combined-rows').innerHTML='<div style="padding:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.4)">各タブでコースを選択すると合算が表示されます</div>';
+    document.getElementById('combined-grand-total').textContent='―';
+    return;
   }
+  const total=entries.reduce((s,e)=>s+e.total,0);
+  let html=entries.map(e=>`<div class="combined-row"><span class="c-label">${e.label}</span><span class="c-val">¥${e.total.toLocaleString()}</span></div>`).join('');
+  html+=`<div class="combined-row total-row"><span class="c-label">合計</span><span class="c-val">¥${total.toLocaleString()}</span></div>`;
+  document.getElementById('combined-rows').innerHTML=html;
+  document.getElementById('combined-grand-total').textContent='¥'+total.toLocaleString();
+}
 
-  // Build panel
-  const container = document.getElementById('staff-panels-container');
-  const div = document.createElement('div');
-  div.className = 'tab-panel';
-  div.id = 'tab-panel-' + tid;
-  div.innerHTML = makeStaffHTML(tid, arrIdx + 2);
+// ─── STAFF MANAGEMENT ───
+function addStaff(){
+  const tid=nextTabId++;
+  staffStates.push({basic:true,hige:false,ladiesVio:false,mensVio:false,cranio:false});
+  staffTabIds.push(tid);
+  const arrIdx=staffStates.length-1;
+  const tabsBar=document.getElementById('tabs-bar');
+  const addBtn=document.getElementById('add-staff-btn');
+  const combinedBtn=document.getElementById('tab-btn-combined');
+  const ph=document.getElementById('tab-btn-placeholder');
+  if(ph){
+    ph.id='tab-btn-'+tid;ph.disabled=false;
+    ph.innerHTML=`👥 ${arrIdx+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${tid})">✕</span>`;
+    ph.onclick=()=>switchTab(tid);
+  } else {
+    const btn=document.createElement('button');
+    btn.className='tab-btn';btn.id='tab-btn-'+tid;
+    btn.innerHTML=`👥 ${arrIdx+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${tid})">✕</span>`;
+    btn.onclick=()=>switchTab(tid);
+    tabsBar.insertBefore(btn,addBtn);
+  }
+  const container=document.getElementById('staff-panels-container');
+  const div=document.createElement('div');
+  div.className='tab-panel';div.id='tab-panel-'+tid;
+  div.innerHTML=makeStaffHTML(tid,arrIdx+2);
   container.appendChild(div);
-
+  loanPrincipals['l'+tid]=0;
   updateStaff(tid);
   switchTab(tid);
 }
 
-// ─── REMOVE STAFF ───
-function removeStaff(e, tid) {
+function removeStaff(e,tid){
   e.stopPropagation();
-  const arrIdx = staffTabIds.indexOf(tid);
-  if (arrIdx === -1) return;
-  staffStates.splice(arrIdx, 1);
-  staffTabIds.splice(arrIdx, 1);
-
-  const btn = document.getElementById('tab-btn-' + tid);
-  const pnl = document.getElementById('tab-panel-' + tid);
-  if (btn) btn.remove();
-  if (pnl) pnl.remove();
-
-  // Renumber remaining buttons
-  staffTabIds.forEach((t, i) => {
-    const b = document.getElementById('tab-btn-' + t);
-    if (b) {
-      b.innerHTML = `👥 ${i+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${t})">✕</span>`;
-    }
+  const arrIdx=staffTabIds.indexOf(tid);
+  if(arrIdx===-1)return;
+  staffStates.splice(arrIdx,1);staffTabIds.splice(arrIdx,1);
+  delete grandTotals['s'+tid];delete loanPrincipals['l'+tid];
+  const btn=document.getElementById('tab-btn-'+tid);
+  const pnl=document.getElementById('tab-panel-'+tid);
+  if(btn)btn.remove();if(pnl)pnl.remove();
+  staffTabIds.forEach((t,i)=>{
+    const b=document.getElementById('tab-btn-'+t);
+    if(b)b.innerHTML=`👥 ${i+2}人目<span class="tab-badge">スタッフ</span><span class="tab-close" onclick="removeStaff(event,${t})">✕</span>`;
   });
-
-  if (staffStates.length === 0) {
-    // Re-add placeholder
-    const tabsBar = document.getElementById('tabs-bar');
-    const addBtn  = document.getElementById('add-staff-btn');
-    const ph = document.createElement('button');
-    ph.className = 'tab-btn';
-    ph.id = 'tab-btn-placeholder';
-    ph.disabled = true;
-    ph.textContent = '👥 2人目（スタッフ）';
-    tabsBar.insertBefore(ph, addBtn);
+  if(staffStates.length===0){
+    const tabsBar=document.getElementById('tabs-bar');
+    const addBtn=document.getElementById('add-staff-btn');
+    const ph=document.createElement('button');
+    ph.className='tab-btn';ph.id='tab-btn-placeholder';ph.disabled=true;ph.textContent='👥 2人目（スタッフ）';
+    tabsBar.insertBefore(ph,addBtn);
   }
-
-  switchTab(0);
+  switchTab(0);updateCombined();
 }
 
-// ─── STAFF PANEL HTML ───
-function makeStaffHTML(tid, nth) {
+const LOAN_OPTS=`<option value="0.60">0.60%</option><option value="0.65">0.65%</option><option value="0.70" selected>0.70%</option><option value="0.75">0.75%</option><option value="0.80">0.80%</option><option value="0.85">0.85%</option><option value="0.90">0.90%</option><option value="0.95">0.95%</option><option value="1.00">1.00%</option>`;
+const COUNT_OPTS=`<option value="6">6回</option><option value="10">10回</option><option value="12">12回</option><option value="15">15回</option><option value="18">18回</option><option value="20">20回</option><option value="24">24回</option><option value="30">30回</option><option value="36" selected>36回</option><option value="48">48回</option><option value="60">60回</option>`;
+
+function makeStaffHTML(tid,nth){
+  const lp='l'+tid;
   return `
-  <div class="notice" style="background:#e8f5ed; border-left-color:var(--green)">
-    <strong style="color:var(--green)">👥 オーナー登録済みの優遇料金（${nth}人目）</strong>　スタッフの優遇料金が適用されます。各コースに事務手数料（¥11,000）が発生します。
-  </div>
-  <div class="card">
-    <div class="card-head"><div class="card-head-icon">📚</div><h2>基本コース</h2><span class="card-sub">必須選択</span></div>
-    <div class="card-body">
-      <div class="course-row selected"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">基本コース <span class="badge badge-required">必須</span></div><div class="course-sub">受講日数 2日</div></div><div><div class="course-price">¥88,000</div></div></div>
-      <div class="course-row auto-selected"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">テキスト（基本）<span class="badge badge-auto">自動付帯</span></div></div><div><div class="course-price">¥11,000</div></div></div>
+  <div class="notice" style="background:#e8f5ed;border-left-color:var(--green)"><strong style="color:var(--green)">👥 オーナー登録済みの優遇料金（${nth}人目）</strong>　各コースに事務手数料（¥11,000）が発生します。</div>
+  <div class="card"><div class="card-head"><div class="card-head-icon">📚</div><h2>基本コース</h2><span class="card-sub">必須選択</span></div><div class="card-body">
+    <div class="course-row selected"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">基本コース <span class="badge badge-required">必須</span></div><div class="course-sub">受講日数 2日</div></div><div><div class="course-price">¥88,000</div></div></div>
+    <div class="course-row auto-selected"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">テキスト（基本）<span class="badge badge-auto">自動付帯</span></div></div><div><div class="course-price">¥11,000</div></div></div>
+  </div></div>
+  <div class="card"><div class="card-head"><div class="card-head-icon">✨</div><h2>オプションコース</h2><span class="card-sub">任意選択</span></div><div class="card-body">
+    <div class="course-row" id="s${tid}-hige" onclick="toggleStaffOpt(${tid},'hige')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">ヒゲ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
+    <div class="course-row" id="s${tid}-ladies-vio" onclick="toggleStaffOpt(${tid},'ladies-vio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">レディースVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
+    <div class="course-row" id="s${tid}-mens-vio" onclick="toggleStaffOpt(${tid},'mens-vio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">メンズVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
+    <div class="course-row" id="s${tid}-cranio" onclick="toggleStaffOpt(${tid},'cranio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">クラニオ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
+    <div class="course-row auto-selected" id="s${tid}-text-cranio" style="display:none"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">テキスト（クラニオ）<span class="badge badge-auto">自動付帯</span></div></div><div><div class="course-price">¥11,000</div></div></div>
+  </div></div>
+  <div class="card"><div class="card-head"><div class="card-head-icon">🧮</div><h2>料金内訳</h2></div><div class="card-body">
+    <div><span class="days-display">選択コース数：<strong id="s${tid}-coursecount">1</strong> コース</span><span class="days-display">事務手数料：<strong id="s${tid}-adminfee">¥11,000</strong></span></div>
+    <div style="margin-top:2px"><span class="days-display">受講日数合計：<strong id="s${tid}-days">2</strong> 日</span><span class="days-display">付属品：<strong id="s${tid}-accessory">¥6,600</strong></span></div>
+  </div></div>
+  <div class="card"><div class="card-head"><div class="card-head-icon">📦</div><h2>スターターセット</h2><span class="card-sub">コースに応じて自動選択</span></div><div class="card-body"><div class="starter-box"><h3>📋 対象スターターセット</h3><div id="s${tid}-starter-items"></div></div></div></div>
+  <div class="summary-card"><div class="summary-head"><span>💴 ${nth}人目 お支払い合計（税込）</span></div><div class="summary-rows" id="s${tid}-summary-rows"></div><div class="grand-total-area"><div class="grand-total-label">${nth}人目 お支払い合計（税込）</div><div class="grand-total-num" id="s${tid}-grand-total">―</div><div class="grand-total-note" id="s${tid}-grand-note"></div></div></div>
+  <div class="card loan-card"><div class="card-head loan-head"><div class="card-head-icon">💳</div><h2>スクールローン シミュレーター</h2><span class="card-sub">${nth}人目</span></div><div class="card-body">
+    <div class="loan-principal-bar">ローン対象額（講習料＋スターター）<strong id="${lp}-principal">¥―</strong></div>
+    <div class="loan-form">
+      <div class="loan-field"><label>頭金</label><div class="input-wrap"><input type="number" id="${lp}-down" value="0" min="0" placeholder="0" oninput="calcLoan('${lp}')"><span class="unit">円</span></div></div>
+      <div class="loan-field"><label>アドオン料率</label><select id="${lp}-rate" onchange="calcLoan('${lp}')">${LOAN_OPTS}</select></div>
+      <div class="loan-field"><label>お支払い回数</label><select id="${lp}-count" onchange="calcLoan('${lp}')">${COUNT_OPTS}</select></div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-head"><div class="card-head-icon">✨</div><h2>オプションコース</h2><span class="card-sub">任意選択</span></div>
-    <div class="card-body">
-      <div class="course-row" id="s${tid}-hige" onclick="toggleStaffOpt(${tid},'hige')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">ヒゲ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
-      <div class="course-row" id="s${tid}-ladies-vio" onclick="toggleStaffOpt(${tid},'ladies-vio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">レディースVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
-      <div class="course-row" id="s${tid}-mens-vio" onclick="toggleStaffOpt(${tid},'mens-vio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">メンズVIO <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
-      <div class="course-row" id="s${tid}-cranio" onclick="toggleStaffOpt(${tid},'cranio')"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">クラニオ <span class="badge badge-option">オプション</span></div><div class="course-sub">受講日数 1日</div></div><div><div class="course-price">¥44,000</div></div></div>
-      <div class="course-row auto-selected" id="s${tid}-text-cranio" style="display:none"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">テキスト（クラニオ）<span class="badge badge-auto">自動付帯</span></div></div><div><div class="course-price">¥11,000</div></div></div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-head"><div class="card-head-icon">🧮</div><h2>料金内訳</h2></div>
-    <div class="card-body">
-      <div>
-        <span class="days-display">選択コース数：<strong id="s${tid}-coursecount">1</strong> コース</span>
-        <span class="days-display">事務手数料：<strong id="s${tid}-adminfee">¥11,000</strong></span>
-      </div>
-      <div style="margin-top:2px">
-        <span class="days-display">受講日数合計：<strong id="s${tid}-days">2</strong> 日</span>
-        <span class="days-display">付属品：<strong id="s${tid}-accessory">¥6,600</strong></span>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-head"><div class="card-head-icon">📦</div><h2>スターターセット</h2><span class="card-sub">コースに応じて自動選択</span></div>
-    <div class="card-body"><div class="starter-box"><h3>📋 対象スターターセット</h3><div id="s${tid}-starter-items"></div></div></div>
-  </div>
-  <div class="summary-card">
-    <div class="summary-head"><span>💴 ${nth}人目 お支払い合計（税込）</span></div>
-    <div class="summary-rows" id="s${tid}-summary-rows"></div>
-    <div class="grand-total-area">
-      <div class="grand-total-label">${nth}人目 お支払い合計（税込）</div>
-      <div class="grand-total-num" id="s${tid}-grand-total">―</div>
-      <div class="grand-total-note" id="s${tid}-grand-note"></div>
-    </div>
-  </div>`;
+    <div id="${lp}-result"></div>
+  </div></div>`;
 }
 
-// ─── TOGGLE – 1人目 ───
-function toggleOpt0(key) {
-  const map = { hige:'hige','ladies-vio':'ladiesVio','mens-vio':'mensVio', cranio:'cranio' };
-  s0[map[key]] = !s0[map[key]]; update0();
-}
-function toggleTrainer() {
-  if (!(s0.ladiesVio || s0.mensVio)) {
-    const al = document.getElementById('p0-alert-trainer');
-    al.classList.add('show'); setTimeout(() => al.classList.remove('show'), 3000); return;
-  }
-  s0.trainer = !s0.trainer; update0();
-}
-function toggleOwner() {
-  s0.owner = !s0.owner;
-  document.getElementById('add-staff-btn').classList.toggle('visible', s0.owner);
-  if (s0.owner) {
-    addStaff();
-  } else {
-    // Remove all staff
-    [...staffTabIds].forEach(tid => {
-      const btn = document.getElementById('tab-btn-' + tid);
-      const pnl = document.getElementById('tab-panel-' + tid);
-      if (btn) btn.remove(); if (pnl) pnl.remove();
-    });
-    staffStates = []; staffTabIds = [];
-    // Re-add placeholder
-    const tabsBar = document.getElementById('tabs-bar');
-    const addBtn  = document.getElementById('add-staff-btn');
-    const ph = document.createElement('button');
-    ph.className = 'tab-btn'; ph.id = 'tab-btn-placeholder';
-    ph.disabled = true; ph.textContent = '👥 2人目（スタッフ）';
-    tabsBar.insertBefore(ph, addBtn);
-    switchTab(0);
+// ─── TOGGLES ───
+function toggleOpt0(key){const map={hige:'hige','ladies-vio':'ladiesVio','mens-vio':'mensVio',cranio:'cranio'};s0[map[key]]=!s0[map[key]];update0();}
+function toggleTrainer(){if(!(s0.ladiesVio||s0.mensVio)){const al=document.getElementById('p0-alert-trainer');al.classList.add('show');setTimeout(()=>al.classList.remove('show'),3000);return;}s0.trainer=!s0.trainer;update0();}
+function toggleOwner(){
+  s0.owner=!s0.owner;
+  document.getElementById('add-staff-btn').classList.toggle('visible',s0.owner);
+  if(s0.owner){addStaff();}
+  else{
+    [...staffTabIds].forEach(tid=>{const b=document.getElementById('tab-btn-'+tid);const p=document.getElementById('tab-panel-'+tid);if(b)b.remove();if(p)p.remove();delete grandTotals['s'+tid];delete loanPrincipals['l'+tid];});
+    staffStates=[];staffTabIds=[];
+    const tabsBar=document.getElementById('tabs-bar');const addBtn=document.getElementById('add-staff-btn');
+    const ph=document.createElement('button');ph.className='tab-btn';ph.id='tab-btn-placeholder';ph.disabled=true;ph.textContent='👥 2人目（スタッフ）';
+    tabsBar.insertBefore(ph,addBtn);switchTab(0);
   }
   update0();
 }
+function toggleStaffOpt(tid,key){const arrIdx=staffTabIds.indexOf(tid);if(arrIdx===-1)return;const map={hige:'hige','ladies-vio':'ladiesVio','mens-vio':'mensVio',cranio:'cranio'};staffStates[arrIdx][map[key]]=!staffStates[arrIdx][map[key]];updateStaff(tid);}
 
-// ─── TOGGLE – スタッフ ───
-function toggleStaffOpt(tid, key) {
-  const arrIdx = staffTabIds.indexOf(tid);
-  if (arrIdx === -1) return;
-  const st = staffStates[arrIdx];
-  const map = { hige:'hige','ladies-vio':'ladiesVio','mens-vio':'mensVio', cranio:'cranio' };
-  st[map[key]] = !st[map[key]]; updateStaff(tid);
+// ─── UPDATE 1人目 ───
+function update0(){
+  const s=s0;
+  const sel=(id,v)=>{const el=document.getElementById(id);if(el)el.classList.toggle('selected',v);};
+  sel('p0-row-hige',s.hige);sel('p0-row-ladies-vio',s.ladiesVio);sel('p0-row-mens-vio',s.mensVio);sel('p0-row-cranio',s.cranio);sel('p0-row-trainer',s.trainer);sel('p0-row-owner',s.owner);
+  const ct=document.getElementById('p0-row-text-cranio');if(ct)ct.style.display=s.cranio?'flex':'none';
+  let days=2;if(s.hige)days++;if(s.ladiesVio)days++;if(s.mensVio)days++;if(s.cranio)days++;
+  const acc=days*P1.accessory;
+  const optCount=[s.hige,s.ladiesVio,s.mensVio,s.cranio].filter(Boolean).length;
+  const disc=optCount>=3?44000:optCount===2?22000:0;
+  const discBar=document.getElementById('p0-discount-bar');
+  if(disc>0){discBar.style.display='flex';document.getElementById('p0-discount-text').textContent=`オプション${optCount}個選択割引`;document.getElementById('p0-discount-amount').textContent=`－¥${disc.toLocaleString()}`;}else{discBar.style.display='none';}
+  document.getElementById('p0-days').textContent=days;document.getElementById('p0-accessory').textContent=`¥${acc.toLocaleString()}`;
+  let courseTotal=0;const rows=[];
+  if(s.basic){rows.push(['基本コース',P1.basic],['テキスト（基本）',P1.textBasic]);courseTotal+=P1.basic+P1.textBasic;}
+  if(s.hige){rows.push(['ヒゲ',P1.hige]);courseTotal+=P1.hige;}
+  if(s.ladiesVio){rows.push(['レディースVIO',P1.ladiesVio]);courseTotal+=P1.ladiesVio;}
+  if(s.mensVio){rows.push(['メンズVIO',P1.mensVio]);courseTotal+=P1.mensVio;}
+  if(s.cranio){rows.push(['クラニオ',P1.cranio],['テキスト（クラニオ）',P1.textCranio]);courseTotal+=P1.cranio+P1.textCranio;}
+  rows.push([`付属品（${days}日×¥3,300）`,acc]);courseTotal+=acc;
+  if(s.trainer){rows.push(['トレーナー講習',P1.trainer]);courseTotal+=P1.trainer;}
+  if(s.owner){rows.push(['オーナー登録',P1.owner]);courseTotal+=P1.owner;}
+  const hasVio=s.ladiesVio||s.mensVio;const starter=getStarter(s.hige,hasVio,s.cranio);const sp=starter?starter.price:0;
+  let html=rows.map(([l,p])=>`<div class="summary-row"><span>${l}</span><span class="s-val">¥${p.toLocaleString()}</span></div>`).join('');
+  html+=`<div class="summary-row"><span>小計</span><span class="s-val">¥${courseTotal.toLocaleString()}</span></div>`;
+  if(disc>0)html+=`<div class="summary-row discount-row"><span>🎁 割引</span><span class="s-val">－¥${disc.toLocaleString()}</span></div>`;
+  if(starter){html+=`<div class="summary-divider"></div>`;html+=`<div class="summary-row starter-row"><span>📦 ${starter.label}</span><span class="s-val">¥${sp.toLocaleString()}</span></div>`;}
+  document.getElementById('p0-summary-rows').innerHTML=html;
+  const grand=courseTotal-disc+sp;
+  document.getElementById('p0-grand-total').textContent=`¥${grand.toLocaleString()}`;
+  document.getElementById('p0-grand-note').textContent=starter?`（講習料 ¥${(courseTotal-disc).toLocaleString()} ＋ スターター ¥${sp.toLocaleString()}）`:'';
+  if(starter&&document.getElementById('p0-starter-items'))document.getElementById('p0-starter-items').innerHTML=`<div class="starter-item"><span>${starter.label}</span><span class="s-price">¥${starter.price.toLocaleString()}</span></div>`;
+  grandTotals['p0']=grand;
+  updateLoanPrincipal('l0',grand);
+  updateCombined();
 }
 
-// ─── UPDATE – 1人目 ───
-function update0() {
-  const s = s0;
-  const sel = (id, v) => { const el = document.getElementById(id); if (el) el.classList.toggle('selected', v); };
-  sel('p0-row-hige', s.hige); sel('p0-row-ladies-vio', s.ladiesVio);
-  sel('p0-row-mens-vio', s.mensVio); sel('p0-row-cranio', s.cranio);
-  sel('p0-row-trainer', s.trainer); sel('p0-row-owner', s.owner);
-  const ct = document.getElementById('p0-row-text-cranio');
-  if (ct) ct.style.display = s.cranio ? 'flex' : 'none';
-
-  let days = 2;
-  if (s.hige) days++; if (s.ladiesVio) days++; if (s.mensVio) days++; if (s.cranio) days++;
-  const acc = days * P1.accessory;
-  const optCount = [s.hige, s.ladiesVio, s.mensVio, s.cranio].filter(Boolean).length;
-  const disc = optCount >= 3 ? 44000 : optCount === 2 ? 22000 : 0;
-
-  const discBar = document.getElementById('p0-discount-bar');
-  if (disc > 0) {
-    discBar.style.display = 'flex';
-    document.getElementById('p0-discount-text').textContent = `オプション${optCount}個選択割引`;
-    document.getElementById('p0-discount-amount').textContent = `－¥${disc.toLocaleString()}`;
-  } else { discBar.style.display = 'none'; }
-
-  document.getElementById('p0-days').textContent = days;
-  document.getElementById('p0-accessory').textContent = `¥${acc.toLocaleString()}`;
-
-  let courseTotal = 0;
-  const rows = [];
-  if (s.basic) { rows.push(['基本コース', P1.basic], ['テキスト（基本）', P1.textBasic]); courseTotal += P1.basic + P1.textBasic; }
-  if (s.hige)      { rows.push(['ヒゲ', P1.hige]);                courseTotal += P1.hige; }
-  if (s.ladiesVio) { rows.push(['レディースVIO', P1.ladiesVio]);  courseTotal += P1.ladiesVio; }
-  if (s.mensVio)   { rows.push(['メンズVIO', P1.mensVio]);         courseTotal += P1.mensVio; }
-  if (s.cranio)    { rows.push(['クラニオ', P1.cranio], ['テキスト（クラニオ）', P1.textCranio]); courseTotal += P1.cranio + P1.textCranio; }
-  rows.push([`付属品（${days}日×¥3,300）`, acc]); courseTotal += acc;
-  if (s.trainer) { rows.push(['トレーナー講習', P1.trainer]); courseTotal += P1.trainer; }
-  if (s.owner)   { rows.push(['オーナー登録', P1.owner]);    courseTotal += P1.owner; }
-
-  const hasVio = s.ladiesVio || s.mensVio;
-  const starter = getStarter(s.hige, hasVio, s.cranio);
-  const sp = starter ? starter.price : 0;
-
-  let html = rows.map(([l,p]) => `<div class="summary-row"><span>${l}</span><span class="s-val">¥${p.toLocaleString()}</span></div>`).join('');
-  html += `<div class="summary-row"><span>小計</span><span class="s-val">¥${courseTotal.toLocaleString()}</span></div>`;
-  if (disc > 0) html += `<div class="summary-row discount-row"><span>🎁 割引</span><span class="s-val">－¥${disc.toLocaleString()}</span></div>`;
-  if (starter) {
-    html += `<div class="summary-divider"></div>`;
-    html += `<div class="summary-row starter-row"><span>📦 ${starter.label}</span><span class="s-val">¥${sp.toLocaleString()}</span></div>`;
-  }
-  document.getElementById('p0-summary-rows').innerHTML = html;
-  const grand = courseTotal - disc + sp;
-  document.getElementById('p0-grand-total').textContent = `¥${grand.toLocaleString()}`;
-  document.getElementById('p0-grand-note').textContent = starter ? `（講習料 ¥${(courseTotal-disc).toLocaleString()} ＋ スターター ¥${sp.toLocaleString()}）` : '';
-  if (starter && document.getElementById('p0-starter-items')) {
-    document.getElementById('p0-starter-items').innerHTML = `<div class="starter-item"><span>${starter.label}</span><span class="s-price">¥${starter.price.toLocaleString()}</span></div>`;
-  }
-}
-
-// ─── UPDATE – スタッフ ───
-function updateStaff(tid) {
-  const arrIdx = staffTabIds.indexOf(tid);
-  if (arrIdx === -1) return;
-  const st = staffStates[arrIdx];
-  const g = id => document.getElementById(id);
-  const sel = (id, v) => { const el = g(id); if (el) el.classList.toggle('selected', v); };
-
-  sel(`s${tid}-hige`, st.hige); sel(`s${tid}-ladies-vio`, st.ladiesVio);
-  sel(`s${tid}-mens-vio`, st.mensVio); sel(`s${tid}-cranio`, st.cranio);
-  const ct = g(`s${tid}-text-cranio`); if (ct) ct.style.display = st.cranio ? 'flex' : 'none';
-
-  const cc = 1 + [st.hige, st.ladiesVio, st.mensVio, st.cranio].filter(Boolean).length;
-  const af = cc * P2.adminFee;
-  let days = 2;
-  if (st.hige) days++; if (st.ladiesVio) days++; if (st.mensVio) days++; if (st.cranio) days++;
-  const acc = days * P2.accessory;
-
-  if (g(`s${tid}-coursecount`)) g(`s${tid}-coursecount`).textContent = cc;
-  if (g(`s${tid}-adminfee`))    g(`s${tid}-adminfee`).textContent    = `¥${af.toLocaleString()}`;
-  if (g(`s${tid}-days`))        g(`s${tid}-days`).textContent        = days;
-  if (g(`s${tid}-accessory`))   g(`s${tid}-accessory`).textContent   = `¥${acc.toLocaleString()}`;
-
-  let ct2 = P2.basic + P2.textBasic;
-  const rows = [['基本コース', P2.basic], ['テキスト（基本）', P2.textBasic]];
-  if (st.hige)      { rows.push(['ヒゲ', P2.hige]);                ct2 += P2.hige; }
-  if (st.ladiesVio) { rows.push(['レディースVIO', P2.ladiesVio]);  ct2 += P2.ladiesVio; }
-  if (st.mensVio)   { rows.push(['メンズVIO', P2.mensVio]);         ct2 += P2.mensVio; }
-  if (st.cranio)    { rows.push(['クラニオ', P2.cranio], ['テキスト（クラニオ）', P2.textCranio]); ct2 += P2.cranio + P2.textCranio; }
-  rows.push([`事務手数料（${cc}コース）`, af]); ct2 += af;
-  rows.push([`付属品（${days}日×¥3,300）`, acc]); ct2 += acc;
-
-  const hasVio = st.ladiesVio || st.mensVio;
-  const starter = getStarter(st.hige, hasVio, st.cranio);
-  const sp = starter ? starter.price : 0;
-
-  let html = rows.map(([l,p]) => `<div class="summary-row"><span>${l}</span><span class="s-val">¥${p.toLocaleString()}</span></div>`).join('');
-  html += `<div class="summary-row"><span>小計</span><span class="s-val">¥${ct2.toLocaleString()}</span></div>`;
-  if (starter) {
-    html += `<div class="summary-divider"></div>`;
-    html += `<div class="summary-row starter-row"><span>📦 ${starter.label}</span><span class="s-val">¥${sp.toLocaleString()}</span></div>`;
-  }
-  const grand = ct2 + sp;
-  if (g(`s${tid}-summary-rows`)) g(`s${tid}-summary-rows`).innerHTML = html;
-  if (g(`s${tid}-grand-total`))  g(`s${tid}-grand-total`).textContent  = `¥${grand.toLocaleString()}`;
-  if (g(`s${tid}-grand-note`))   g(`s${tid}-grand-note`).textContent   = starter ? `（講習料 ¥${ct2.toLocaleString()} ＋ スターター ¥${sp.toLocaleString()}）` : '';
-  if (starter && g(`s${tid}-starter-items`)) {
-    g(`s${tid}-starter-items`).innerHTML = `<div class="starter-item"><span>${starter.label}</span><span class="s-price">¥${starter.price.toLocaleString()}</span></div>`;
-  }
+// ─── UPDATE スタッフ ───
+function updateStaff(tid){
+  const arrIdx=staffTabIds.indexOf(tid);if(arrIdx===-1)return;
+  const st=staffStates[arrIdx];
+  const g=id=>document.getElementById(id);
+  const sel=(id,v)=>{const el=g(id);if(el)el.classList.toggle('selected',v);};
+  sel(`s${tid}-hige`,st.hige);sel(`s${tid}-ladies-vio`,st.ladiesVio);sel(`s${tid}-mens-vio`,st.mensVio);sel(`s${tid}-cranio`,st.cranio);
+  const ct=g(`s${tid}-text-cranio`);if(ct)ct.style.display=st.cranio?'flex':'none';
+  const cc=1+[st.hige,st.ladiesVio,st.mensVio,st.cranio].filter(Boolean).length;
+  const af=cc*P2.adminFee;
+  let days=2;if(st.hige)days++;if(st.ladiesVio)days++;if(st.mensVio)days++;if(st.cranio)days++;
+  const acc=days*P2.accessory;
+  if(g(`s${tid}-coursecount`))g(`s${tid}-coursecount`).textContent=cc;
+  if(g(`s${tid}-adminfee`))g(`s${tid}-adminfee`).textContent=`¥${af.toLocaleString()}`;
+  if(g(`s${tid}-days`))g(`s${tid}-days`).textContent=days;
+  if(g(`s${tid}-accessory`))g(`s${tid}-accessory`).textContent=`¥${acc.toLocaleString()}`;
+  let ct2=P2.basic+P2.textBasic;const rows=[['基本コース',P2.basic],['テキスト（基本）',P2.textBasic]];
+  if(st.hige){rows.push(['ヒゲ',P2.hige]);ct2+=P2.hige;}
+  if(st.ladiesVio){rows.push(['レディースVIO',P2.ladiesVio]);ct2+=P2.ladiesVio;}
+  if(st.mensVio){rows.push(['メンズVIO',P2.mensVio]);ct2+=P2.mensVio;}
+  if(st.cranio){rows.push(['クラニオ',P2.cranio],['テキスト（クラニオ）',P2.textCranio]);ct2+=P2.cranio+P2.textCranio;}
+  rows.push([`事務手数料（${cc}コース）`,af]);ct2+=af;rows.push([`付属品（${days}日×¥3,300）`,acc]);ct2+=acc;
+  const hasVio=st.ladiesVio||st.mensVio;const starter=getStarter(st.hige,hasVio,st.cranio);const sp=starter?starter.price:0;
+  let html=rows.map(([l,p])=>`<div class="summary-row"><span>${l}</span><span class="s-val">¥${p.toLocaleString()}</span></div>`).join('');
+  html+=`<div class="summary-row"><span>小計</span><span class="s-val">¥${ct2.toLocaleString()}</span></div>`;
+  if(starter){html+=`<div class="summary-divider"></div>`;html+=`<div class="summary-row starter-row"><span>📦 ${starter.label}</span><span class="s-val">¥${sp.toLocaleString()}</span></div>`;}
+  const grand=ct2+sp;
+  if(g(`s${tid}-summary-rows`))g(`s${tid}-summary-rows`).innerHTML=html;
+  if(g(`s${tid}-grand-total`))g(`s${tid}-grand-total`).textContent=`¥${grand.toLocaleString()}`;
+  if(g(`s${tid}-grand-note`))g(`s${tid}-grand-note`).textContent=starter?`（講習料 ¥${ct2.toLocaleString()} ＋ スターター ¥${sp.toLocaleString()}）`:'';
+  if(starter&&g(`s${tid}-starter-items`))g(`s${tid}-starter-items`).innerHTML=`<div class="starter-item"><span>${starter.label}</span><span class="s-price">¥${starter.price.toLocaleString()}</span></div>`;
+  grandTotals['s'+tid]=grand;
+  updateLoanPrincipal('l'+tid,grand);
+  updateCombined();
 }
 
 // ─── RESET ───
-function resetAll() {
-  s0.basic=true; s0.hige=false; s0.ladiesVio=false; s0.mensVio=false;
-  s0.cranio=false; s0.trainer=false; s0.owner=false;
-  // Remove all staff tabs
-  [...staffTabIds].forEach(tid => {
-    const btn = document.getElementById('tab-btn-'+tid);
-    const pnl = document.getElementById('tab-panel-'+tid);
-    if (btn) btn.remove(); if (pnl) pnl.remove();
-  });
-  staffStates=[]; staffTabIds=[]; nextTabId=1;
+function resetAll(){
+  s0.basic=true;s0.hige=false;s0.ladiesVio=false;s0.mensVio=false;s0.cranio=false;s0.trainer=false;s0.owner=false;
+  [...staffTabIds].forEach(tid=>{const b=document.getElementById('tab-btn-'+tid);const p=document.getElementById('tab-panel-'+tid);if(b)b.remove();if(p)p.remove();});
+  staffStates=[];staffTabIds=[];nextTabId=1;
+  Object.keys(grandTotals).forEach(k=>{if(k!=='p0')delete grandTotals[k];});
+  Object.keys(loanPrincipals).forEach(k=>{if(k!=='l0')delete loanPrincipals[k];});
   document.getElementById('add-staff-btn').classList.remove('visible');
-  // Ensure placeholder
-  if (!document.getElementById('tab-btn-placeholder')) {
-    const tabsBar = document.getElementById('tabs-bar');
-    const addBtn  = document.getElementById('add-staff-btn');
-    const ph = document.createElement('button');
-    ph.className='tab-btn'; ph.id='tab-btn-placeholder';
-    ph.disabled=true; ph.textContent='👥 2人目（スタッフ）';
-    tabsBar.insertBefore(ph, addBtn);
+  if(!document.getElementById('tab-btn-placeholder')){
+    const tabsBar=document.getElementById('tabs-bar');const addBtn=document.getElementById('add-staff-btn');
+    const ph=document.createElement('button');ph.className='tab-btn';ph.id='tab-btn-placeholder';ph.disabled=true;ph.textContent='👥 2人目（スタッフ）';
+    tabsBar.insertBefore(ph,addBtn);
   }
-  switchTab(0); update0();
+  const downEl=document.getElementById('l0-down');if(downEl)downEl.value=0;
+  const rateEl=document.getElementById('l0-rate');if(rateEl)rateEl.value='0.70';
+  const countEl=document.getElementById('l0-count');if(countEl)countEl.value='36';
+  switchTab(0);update0();
 }
 
 // INIT
