@@ -12,20 +12,20 @@
   --cream:#faf6ee;--cream-dark:#f0e8d8;--text:#1a1a2e;--text-mid:#4a4a6a;
   --text-light:#8a8aaa;--green:#2d7a4f;--red:#c0392b;--red-light:#fdecea;
   --border:#d4c9b0;--shadow:0 4px 24px rgba(13,27,46,.10);--shadow-lg:0 8px 40px rgba(13,27,46,.16);
-  --teal:#0e5f6e;--teal-mid:#0d4f5c;
+  --teal:#0e5f6e;--teal-mid:#0d4f5c;--blue:#1a6db5;--blue-dark:#145a9e;--blue-light:#e8f2fc;--blue-mid:#1d5d9e;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
-header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,.3);}
-.logo-mark{width:36px;height:36px;border:2px solid var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+header{background:linear-gradient(135deg,#0a1628 0%,#0d2244 50%,#0a1628 100%);padding:16px 20px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:200;box-shadow:0 2px 20px rgba(0,0,0,.4),0 1px 0 rgba(26,109,181,.3);}
+.logo-mark{width:36px;height:36px;border:2px solid var(--blue-light);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;background:rgba(26,109,181,.15);}
 .logo-mark span{color:var(--gold);font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;}
 .header-title h1{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:600;color:var(--cream);letter-spacing:.04em;}
 .header-title p{font-size:10px;color:var(--gold);letter-spacing:.08em;margin-top:1px;}
-.header-reset{margin-left:auto;background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold);font-family:'Noto Sans JP',sans-serif;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .2s;}
-.header-reset:hover{background:rgba(201,168,76,.15);}
-.tabs-bar{background:var(--navy-mid);display:flex;align-items:stretch;border-bottom:1px solid rgba(201,168,76,.2);overflow-x:auto;position:sticky;top:57px;z-index:190;}
+.header-reset{margin-left:auto;background:transparent;border:1px solid rgba(26,109,181,.5);color:#7db8e8;font-family:'Noto Sans JP',sans-serif;font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .2s;}
+.header-reset:hover{background:rgba(26,109,181,.2);}
+.tabs-bar{background:linear-gradient(180deg,#162438,#112038);display:flex;align-items:stretch;border-bottom:2px solid rgba(26,109,181,.35);overflow-x:auto;position:sticky;top:57px;z-index:190;}
 .tab-btn{flex-shrink:0;min-width:110px;padding:12px 14px;background:transparent;border:none;color:rgba(250,246,238,.5);font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
-.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.tab-btn.active{color:#7db8e8;border-bottom-color:var(--blue);}
 .tab-btn:disabled{opacity:.3;cursor:not-allowed;}
 .tab-btn.combined-tab{color:rgba(100,220,180,.6);}
 .tab-btn.combined-tab.active{color:#4de8b8;border-bottom-color:#4de8b8;}
@@ -39,8 +39,8 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .tab-panel{display:none;}
 .tab-panel.active{display:block;animation:fadeIn .2s ease;}
 .card{background:#fff;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;}
-.card-head{background:var(--navy);padding:11px 16px;display:flex;align-items:center;gap:9px;}
-.card-head-icon{width:26px;height:26px;background:rgba(201,168,76,.2);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.card-head{background:linear-gradient(90deg,#0d1b2e 0%,#112040 100%);padding:11px 16px;display:flex;align-items:center;gap:9px;border-bottom:2px solid rgba(26,109,181,.4);}
+.card-head-icon{width:26px;height:26px;background:rgba(26,109,181,.25);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
 .card-head h2{font-family:'Noto Serif JP',serif;font-size:13px;font-weight:600;color:var(--cream);letter-spacing:.04em;}
 .card-head .card-sub{font-size:10px;color:var(--gold);margin-left:auto;letter-spacing:.04em;}
 .card-head.loan-head{background:var(--teal);}
@@ -49,12 +49,12 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .course-row{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:8px;margin-bottom:5px;border:1.5px solid transparent;transition:all .18s;cursor:pointer;user-select:none;}
 .course-row:last-child{margin-bottom:0;}
 .course-row:hover{background:var(--cream);}
-.course-row.selected{background:#f0f7ff;border-color:#3b82f6;}
+.course-row.selected{background:var(--blue-light);border-color:var(--blue);}
 .course-row.auto-selected{background:#f8f4ea;border-color:var(--gold-dim);opacity:.85;}
 .course-row.owner-restricted{opacity:.35;cursor:not-allowed;background:#f5f5f5!important;border-color:transparent!important;}
 .course-row.owner-restricted:hover{background:#f5f5f5!important;}
 .course-check{width:20px;height:20px;flex-shrink:0;border:2px solid #c0c0d0;border-radius:4px;display:flex;align-items:center;justify-content:center;transition:all .18s;background:#fff;}
-.course-row.selected .course-check{background:#3b82f6;border-color:#3b82f6;}
+.course-row.selected .course-check{background:var(--blue);border-color:var(--blue-dark);}
 .course-row.auto-selected .course-check{background:var(--gold-dim);border-color:var(--gold-dim);}
 .check-mark{color:#fff;font-size:12px;font-weight:700;display:none;}
 .course-row.selected .check-mark,.course-row.auto-selected .check-mark{display:block;}
@@ -101,10 +101,10 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .trainer-nudge .nudge-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px;}
 .nudge-savings{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--green);}
 .nudge-actions{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}
-.nudge-btn-primary{background:var(--green);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;border:none;cursor:pointer;transition:all .2s;}
-.nudge-btn-primary:hover{background:#256040;}
-.nudge-btn-secondary{background:transparent;color:var(--green);font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid var(--green);cursor:pointer;transition:all .2s;}
-.nudge-btn-secondary:hover{background:rgba(45,122,79,.08);}
+.nudge-btn-primary{background:var(--blue);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;border:none;cursor:pointer;transition:all .2s;}
+.nudge-btn-primary:hover{background:var(--blue-dark);}
+.nudge-btn-secondary{background:transparent;color:#7db8e8;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid rgba(26,109,181,.6);cursor:pointer;transition:all .2s;}
+.nudge-btn-secondary:hover{background:rgba(26,109,181,.12);}
 .nudge-ready{background:linear-gradient(135deg,#e2f8f0,#ccf0e2);border:1.5px solid #6dcca0;border-radius:10px;padding:13px 16px;margin-top:10px;margin-bottom:0;font-size:12px;color:#1a5c3a;line-height:1.7;display:none;}
 .nudge-ready .nudge-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px;}
 .trainer-benefit-card{background:linear-gradient(160deg,#0a3d4a,#0e5f6e);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:14px;display:none;}
@@ -175,8 +175,8 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 </head>
 <body>
 <header>
-  <div class="logo-mark"><span>料</span></div>
-  <div class="header-title"><h1>BWJ東京2026 受講料金シミュレーター</h1><p>COURSE FEE CALCULATOR</p></div>
+  <div class="logo-mark"><img src="data:image/png;base64,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" alt="WIWA" style="width:32px;height:32px;object-fit:contain;filter:brightness(0) invert(1);"></div>
+  <div class="header-title"><h1>BWJ東京2026 受講料金シミュレーター</h1><p style="color:#7db8e8;letter-spacing:.1em">WIWA × TAKUMIDO</p></div>
   <button class="header-reset" onclick="resetAll()">リセット</button>
 </header>
 
