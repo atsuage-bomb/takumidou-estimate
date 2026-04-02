@@ -100,6 +100,13 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .trainer-nudge{background:linear-gradient(135deg,#e2f8f0,#ccf0e2);border:1.5px solid #6dcca0;border-radius:10px;padding:13px 16px;margin-bottom:14px;font-size:12px;color:#1a5c3a;line-height:1.7;display:none;}
 .trainer-nudge .nudge-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px;}
 .nudge-savings{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--green);}
+.nudge-actions{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}
+.nudge-btn-primary{background:var(--green);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;padding:8px 18px;border-radius:20px;border:none;cursor:pointer;transition:all .2s;}
+.nudge-btn-primary:hover{background:#256040;}
+.nudge-btn-secondary{background:transparent;color:var(--green);font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border-radius:20px;border:1.5px solid var(--green);cursor:pointer;transition:all .2s;}
+.nudge-btn-secondary:hover{background:rgba(45,122,79,.08);}
+.nudge-ready{background:linear-gradient(135deg,#e2f8f0,#ccf0e2);border:1.5px solid #6dcca0;border-radius:10px;padding:13px 16px;margin-top:10px;margin-bottom:0;font-size:12px;color:#1a5c3a;line-height:1.7;display:none;}
+.nudge-ready .nudge-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:4px;}
 .trainer-benefit-card{background:linear-gradient(160deg,#0a3d4a,#0e5f6e);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:14px;display:none;}
 .tb-head{background:linear-gradient(90deg,#4de8b8,#2db89a);padding:11px 16px;display:flex;align-items:center;gap:8px;}
 .tb-head-title{font-size:13px;font-weight:700;color:#0a3040;}
@@ -120,7 +127,14 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 .tb-saving-num{font-family:'Noto Serif JP',serif;font-size:26px;font-weight:700;color:#4de8b8;}
 .tb-after-label{font-size:10px;color:rgba(255,255,255,.4);text-align:right;}
 .tb-after-num{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:700;color:#fff;text-align:right;}
-.tb-cranio-note{font-size:10px;color:rgba(255,255,255,.3);padding:0 16px 12px;text-align:right;}
+.tb-cranio-note{font-size:10px;color:rgba(255,255,255,.3);padding:0 16px 10px;text-align:right;}
+.tb-recovery-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 10px;}
+.tb-recovery-item{background:rgba(77,232,184,.1);border:1px solid rgba(77,232,184,.2);border-radius:8px;padding:10px 12px;}
+.tb-recovery-label{font-size:10px;color:rgba(77,232,184,.65);margin-bottom:3px;letter-spacing:.04em;}
+.tb-recovery-val{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:700;color:#4de8b8;}
+.tb-recovery-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px;}
+.tb-max-box{background:rgba(0,0,0,.2);border:1px dashed rgba(77,232,184,.25);border-radius:8px;padding:10px 14px;margin:0 0 14px;font-size:12px;color:rgba(255,255,255,.6);line-height:1.7;}
+.tb-max-box strong{color:#4de8b8;}
 .loan-card{border-color:#1a7a8a;}
 .loan-principal-bar{background:rgba(14,95,110,.08);border:1px solid rgba(14,95,110,.25);border-radius:8px;padding:9px 14px;margin-bottom:14px;font-size:12px;color:var(--teal-mid);display:flex;align-items:center;justify-content:space-between;}
 .loan-principal-bar strong{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:var(--teal);}
@@ -176,7 +190,6 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
 <div class="main-wrap">
 <div class="tab-panel active" id="tab-panel-0">
   <div class="notice"><strong>📌 ご案内</strong>　初めて受講されるお客様は、必ず<strong>基本コース</strong>をご選択ください。オプションコースは単独では受講できません。</div>
-  <div class="trainer-nudge" id="p0-trainer-nudge"><div class="nudge-title">💡 トレーナー講習も受講するとさらにお得！</div><span id="p0-nudge-body"></span></div>
 
   <div class="card">
     <div class="card-head"><div class="card-head-icon">📚</div><h2>基本コース</h2><span class="card-sub">必須選択</span></div>
@@ -204,6 +217,8 @@ header{background:var(--navy);padding:16px 20px;display:flex;align-items:center;
       <div class="alert" id="p0-alert-trainer">トレーナー講習には「基本コース＋VIO（いずれか）」の受講が必要です。</div>
       <div class="course-row" id="p0-row-trainer" onclick="toggleTrainer()"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">トレーナー講習 <span class="badge badge-special">上位コース</span></div><div class="course-sub">基本コース＋VIO受講が条件</div></div><div><div class="course-price">¥495,000</div></div></div>
       <div class="course-row" id="p0-row-owner" onclick="toggleOwner()"><div class="course-check"><span class="check-mark">✓</span></div><div class="course-info"><div class="course-name">オーナー登録 <span class="badge badge-special">特典あり</span></div><div class="course-sub">選択するとスタッフ割引価格が適用されます</div></div><div><div class="course-price">¥110,000</div></div></div>
+      <div class="trainer-nudge" id="p0-trainer-nudge" style="margin-top:10px;margin-bottom:0"><div class="nudge-title">💡 トレーナー講習も受講するとさらにお得！</div><span id="p0-nudge-body"></span><div class="nudge-actions"><button class="nudge-btn-secondary" onclick="goToStaffTab()">トレーナーなしで2人目へ進む →</button></div></div>
+      <div class="nudge-ready" id="p0-nudge-ready"><div class="nudge-title">✅ 準備完了！2人目のコース選択へ進みましょう</div><span id="p0-ready-body"></span><div class="nudge-actions"><button class="nudge-btn-primary" onclick="goToStaffTab()">2人目のコース選択へ進む →</button></div></div>
     </div>
   </div>
 
@@ -284,6 +299,7 @@ function switchTab(id){
   const b=document.getElementById('tab-btn-'+(id==='combined'?'combined':id));
   const p=document.getElementById('tab-panel-'+(id==='combined'?'combined':id));
   if(b)b.classList.add('active');if(p)p.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function calcLoan(prefix){
@@ -349,19 +365,45 @@ function syncStaffToOwner(){
 }
 
 function updateTrainerNudge(){
-  const el=document.getElementById('p0-trainer-nudge');
-  const body=document.getElementById('p0-nudge-body');
-  if(!el||!body)return;
-  if(!s0.owner||s0.trainer){el.style.display='none';return;}
-  let savings=0;
-  if(s0.basic)savings+=P2.basic;
-  if(s0.hige)savings+=P2.hige;
-  if(s0.ladiesVio)savings+=P2.ladiesVio;
-  if(s0.mensVio)savings+=P2.mensVio;
-  if(savings>0){
-    el.style.display='block';
-    body.innerHTML=`選択中のコースをスタッフに直接指導することで（クラニオを除く）、2人目の受講料を最大<br><span class="nudge-savings"> ¥${savings.toLocaleString()} </span>節約できます！<br><small style="opacity:.7">（テキスト代・付属品費・事務手数料は引き続き必要です）</small>`;
-  }else{el.style.display='none';}
+  const nudgeEl=document.getElementById('p0-trainer-nudge');
+  const nudgeBody=document.getElementById('p0-nudge-body');
+  const readyEl=document.getElementById('p0-nudge-ready');
+  const readyBody=document.getElementById('p0-ready-body');
+  if(!nudgeEl||!readyEl)return;
+
+  if(!s0.owner){
+    nudgeEl.style.display='none';
+    readyEl.style.display='none';
+    return;
+  }
+
+  if(!s0.trainer){
+    // オーナー登録済み・トレーナー未選択 → 節約ナッジ表示
+    readyEl.style.display='none';
+    let savings=0;
+    if(s0.basic)savings+=P2.basic;
+    if(s0.hige)savings+=P2.hige;
+    if(s0.ladiesVio)savings+=P2.ladiesVio;
+    if(s0.mensVio)savings+=P2.mensVio;
+    if(savings>0){
+      const people=Math.ceil(495000/savings);
+      nudgeEl.style.display='block';
+      nudgeBody.innerHTML=`選択中のコース（クラニオ除く）をスタッフに直接指導すると、<strong>1人あたり ¥${savings.toLocaleString()} の受講料削減効果</strong>があります。<br>トレーナー講習費（¥495,000）は <strong>約${people}人への指導</strong> で回収できる計算です。<br><small style="opacity:.7">※テキスト代・付属品費・事務手数料は引き続き必要です</small>`;
+    }else{
+      nudgeEl.style.display='none';
+    }
+  } else {
+    // オーナー＋トレーナー両方選択済み → 準備完了表示
+    nudgeEl.style.display='none';
+    let savings=0;
+    if(s0.basic)savings+=P2.basic;
+    if(s0.hige)savings+=P2.hige;
+    if(s0.ladiesVio)savings+=P2.ladiesVio;
+    if(s0.mensVio)savings+=P2.mensVio;
+    const people=savings>0?Math.ceil(495000/savings):null;
+    readyEl.style.display='block';
+    readyBody.innerHTML=`オーナー登録＋トレーナー講習の選択が完了しました。<br>スタッフへの指導で<strong>1人あたり ¥${savings.toLocaleString()} の受講料削減効果</strong>が生まれます。${people?`<br>約 <strong>${people}人</strong> への指導でトレーナー講習費（¥495,000）を回収できます。`:''}`;
+  }
 }
 
 function renderTrainerBenefit(tid,st){
@@ -376,34 +418,47 @@ function renderTrainerBenefit(tid,st){
     {key:'mensVio',label:'メンズVIO',reg:P2.mensVio,sel:st.mensVio,owns:s0.mensVio,teach:true},
     {key:'cranio',label:'クラニオ',reg:P2.cranio,sel:st.cranio,owns:s0.cranio,teach:false},
   ].filter(c=>c.owns&&c.sel);
+  // 最大削減額（オーナーが受講したコースでクラニオ除く）
+  let maxSavings=0;
+  if(s0.basic)maxSavings+=P2.basic;
+  if(s0.hige)maxSavings+=P2.hige;
+  if(s0.ladiesVio)maxSavings+=P2.ladiesVio;
+  if(s0.mensVio)maxSavings+=P2.mensVio;
+  const maxPeople=maxSavings>0?Math.ceil(495000/maxSavings):null;
   if(!courses.length){
-    el.innerHTML='<div class="tb-head"><span class="tb-head-title">💡 オーナーが直接指導をした場合</span></div><div style="padding:14px 16px;font-size:12px;color:rgba(255,255,255,.4)">スタッフのコースを選択すると節約額が表示されます</div>';
+    el.innerHTML=`<div class="tb-head"><span class="tb-head-title">💡 トレーナー講習費の回収シミュレーション</span><span class="tb-head-sub">オーナーによる直接指導</span></div>
+    <div style="padding:12px 16px 4px">
+      ${maxSavings>0?`<div class="tb-max-box">📊 <strong>最大削減パターン</strong>（選択コース・クラニオ除く）<br>1人あたり <strong>▲¥${maxSavings.toLocaleString()}</strong> の受講料削減効果<br>→ 約 <strong>${maxPeople}人</strong> への指導でトレーナー講習費（¥495,000）を回収</div>`:''}
+      <div style="padding:4px 0 12px;font-size:12px;color:rgba(255,255,255,.4)">スタッフのコースを選択すると詳細が表示されます</div>
+    </div>`;
     return;
   }
   const totalSavings=courses.filter(c=>c.teach).reduce((s,c)=>s+c.reg,0);
-  const cc=1+[st.hige,st.ladiesVio,st.mensVio,st.cranio].filter(Boolean).length;
-  const af=cc*P2.adminFee;
-  let days=2;if(st.hige)days++;if(st.ladiesVio)days++;if(st.mensVio)days++;if(st.cranio)days++;
-  const acc=days*P2.accessory;
-  let adjTotal=P2.textBasic+af+acc;
-  if(st.cranio)adjTotal+=P2.cranio+P2.textCranio;
-  const starter=getStarter(st.hige,st.ladiesVio||st.mensVio,st.cranio);
-  if(starter)adjTotal+=starter.price;
-  let rows=`<tr><th>コース</th><th style="text-align:right">通常</th><th style="text-align:right">指導</th><th style="text-align:right">節約</th></tr>`;
+  const peopleNeeded=totalSavings>0?Math.ceil(495000/totalSavings):null;
+  let rows=`<tr><th>コース</th><th style="text-align:right">通常</th><th style="text-align:right">指導</th><th style="text-align:right">削減効果</th></tr>`;
   courses.forEach(c=>{
     const tp=c.teach?0:c.reg,sv=c.teach?c.reg:0;
     rows+=`<tr><td class="td-label">${c.label}${!c.teach?' <small style="color:rgba(255,255,255,.3)">(指導不可)</small>':''}</td><td class="td-regular">¥${c.reg.toLocaleString()}</td><td class="td-trainer">${tp===0?'¥0':'¥'+tp.toLocaleString()}</td><td class="${sv>0?'td-save':'td-nosave'}">${sv>0?'▲¥'+sv.toLocaleString():'—'}</td></tr>`;
   });
   el.innerHTML=`
-  <div class="tb-head"><span class="tb-head-title">💡 オーナーが直接指導をした場合</span><span class="tb-head-sub">クラニオを除くコースに適用</span></div>
+  <div class="tb-head"><span class="tb-head-title">💡 トレーナー講習費の回収シミュレーション</span><span class="tb-head-sub">オーナーによる直接指導</span></div>
   <div class="tb-body">
     <table class="tb-table">${rows}</table>
-    <div class="tb-saving-area">
-      <div><div class="tb-saving-label">受講料の節約額</div><div class="tb-saving-num">▲¥${totalSavings.toLocaleString()}</div></div>
-      <div><div class="tb-after-label">適用後の実質負担額</div><div class="tb-after-num">¥${adjTotal.toLocaleString()}</div></div>
+    <div class="tb-recovery-grid">
+      <div class="tb-recovery-item">
+        <div class="tb-recovery-label">この方への受講料削減効果</div>
+        <div class="tb-recovery-val">▲¥${totalSavings.toLocaleString()}</div>
+        <div class="tb-recovery-sub">受講料の削減（クラニオ除く）</div>
+      </div>
+      <div class="tb-recovery-item">
+        <div class="tb-recovery-label">講習費の回収まで</div>
+        <div class="tb-recovery-val">約${peopleNeeded}人</div>
+        <div class="tb-recovery-sub">同コース構成で指導した場合</div>
+      </div>
     </div>
+    ${maxSavings>0&&maxSavings!==totalSavings?`<div class="tb-max-box">📊 <strong>最大削減パターン</strong>（クラニオ除く全コース指導の場合）<br>1人あたり <strong>▲¥${maxSavings.toLocaleString()}</strong> → 約 <strong>${maxPeople}人</strong> で講習費回収</div>`:''}
   </div>
-  ${s0.cranio&&st.cranio?'<div class="tb-cranio-note">※ クラニオはトレーナーが指導できないため通常料金です</div>':''}`;
+  ${s0.cranio&&st.cranio?'<div class="tb-cranio-note">※ クラニオはオーナーが指導できないため通常料金です</div>':''}`;
 }
 
 function makeStaffHTML(tid,nth){
@@ -479,7 +534,17 @@ function addStaff(){
   const container=document.getElementById('staff-panels-container');
   const div=document.createElement('div');div.className='tab-panel';div.id='tab-panel-'+tid;
   div.innerHTML=makeStaffHTML(tid,arrIdx+2);container.appendChild(div);
-  loanPrincipals['l'+tid]=0;updateStaff(tid);switchTab(tid);
+  loanPrincipals['l'+tid]=0;updateStaff(tid);
+}
+
+function goToStaffTab(){
+  if(staffTabIds.length>0){
+    switchTab(staffTabIds[0]);
+  } else if(s0.owner){
+    // スタッフタブが削除されていた場合は再作成して遷移
+    addStaff();
+    switchTab(staffTabIds[0]);
+  }
 }
 
 function removeStaff(e,tid){
@@ -522,7 +587,6 @@ function toggleOwner(){
     staffStates=[];staffTabIds=[];
     const ph=document.createElement('button');ph.className='tab-btn';ph.id='tab-btn-placeholder';ph.disabled=true;ph.textContent='👥 2人目（スタッフ）';
     document.getElementById('tabs-bar').insertBefore(ph,document.getElementById('add-staff-btn'));
-    switchTab(0);
   }
   update0();
 }
